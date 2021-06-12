@@ -36,16 +36,22 @@ class mosaic_cid_tool:
         sys.stderr.buffer.write(command.stderr)
         # sys.exit(command.returncode)
 
-    def run_simulation(self) -> None:
+    def run_simulation(self, jupyter=False) -> None:
         """Run the selected simulation and record logs
         """
-        self._cd_mosaic()
         extension = '.sh' if self.is_unix is True else '.bat'
-        command = subprocess.run(['./mosaic' + extension,
-                                  ' -s',
-                                  self._sim_name + ' -v'],
-                                 capture_output=True)
-        self._std_pipe(command)
+        self._cd_mosaic()
+        if jupyter is False:
+            command = subprocess.run(['./mosaic' + extension,
+                                      ' -s',
+                                      self._sim_name + ' -v'],
+                                     capture_output=True)
+            self._std_pipe(command)
+            return 0
+        else:
+            cmd = self._path_to_m + './mosaic' + extension + ' -s' \
+                + self.sim_name + ' -v'
+            return cmd
 
     def select_simulation_result(self, idx: int = 0):
         """Utility function to select the simulation and generate DataFrames
@@ -99,12 +105,15 @@ class mosaic_cid_tool:
         is_eventname = self.output_df.Event == eventname
         is_app_name = self.output_df.Name == app_name
 
-        list_diff = list(set(self.df_col_names)
-                         - set(args)
-                         - set(['Event', 'Time', 'Name']))
+        if args[0] != 'all':
+            list_diff = list(set(self.df_col_names)
+                             - set(args)
+                             - set(['Event', 'Time', 'Name']))
 
-        filtered_df = self.output_df[is_eventname
-                                     & is_app_name].drop(list_diff, axis=1)
+            filtered_df = self.output_df[is_eventname
+                                         & is_app_name].drop(list_diff, axis=1)
+        else:
+            filtered_df = self.output_df[is_eventname & is_app_name]
 
         return filtered_df
 
