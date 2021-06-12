@@ -2,6 +2,7 @@ import subprocess
 import sys
 import os
 import pandas as pd
+import xml.etree.ElementTree as ET
 
 
 class mosaic_utils:
@@ -43,7 +44,7 @@ class mosaic_utils:
     def change_setting(self):
         pass
 
-    def select_simulation_result(self, idx: int = 0, colnum: int = 30):
+    def select_simulation_result(self, idx: int = 0):
         """Utility function to select the simulation and generate DataFrames
 
         Parameters
@@ -51,16 +52,16 @@ class mosaic_utils:
         idx : int, optional
             index of the log, 0 is the most recent result from
             the simulation, 1 is the second most recent, by default 0
-        colnum : int, optional
-            number of columns, by default 30
         """
         log_path = self._path_to_m + 'logs/'
         dirs = sorted([f.name for f in os.scandir(log_path) if f.is_dir()],
                       reverse=True)
         self.sim_select = log_path + dirs[idx]
-        self.colnum = [i for i in range(colnum)]
 
-        self._get_output_csv()
+        output_root = self._get_output_config()
+        col_names = self._get_output_names(output_root)
+        self.output_df = self._get_output_csv(col_names)
+        pass
 
     def select_vehicle(self, arr_of_idx: list) -> None:
         """Selects the simulated vehicles
@@ -72,7 +73,11 @@ class mosaic_utils:
         """
         pass
 
-    def _get_output_csv(self) -> pd.DataFrame:
+    def _get_output_names(self, root):
+
+        return [i.text for i in root[0][3][0][0]]
+
+    def _get_output_csv(self, col_names) -> pd.DataFrame:
         """Getter function for the output.csv file, which holds the log data of
         the indexed simulation.
 
@@ -84,7 +89,19 @@ class mosaic_utils:
         return pd.read_csv(self.sim_select + '/output.csv',
                            sep=';',
                            header=None,
-                           names=self.colnum)
+                           names=col_names)
+
+    def _get_output_config(self):
+
+        xml_path = self._path_to_m + 'scenarios/' + self.sim_name \
+            + '/output/output_config.xml'
+
+        tree = ET.parse(xml_path)
+        return tree.getroot()
+
+    @property
+    def get_output_df(self):
+        return self.output_df
 
     @property
     def sim_name(self):
