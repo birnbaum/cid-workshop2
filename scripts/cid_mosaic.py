@@ -5,26 +5,27 @@ import re
 import xml.etree.ElementTree as ET
 import json
 
+import numpy as np
 import pandas as pd
 import glom
 
 
 class cid_mosaic:
+    """Initialize the path to MOSAIC and simulation name
+
+    Parameters
+    ----------
+    path_to_m : str
+        path to Eclipse MOSAIC
+    sim_name : str
+        Simulation name
+    is_unix : bool
+        Set True for UNIX based systems, set false for WINDOWS
+    """
     def __init__(self,
                  path_to_m: str,
                  sim_name: str,
                  is_unix: bool = True) -> None:
-        """Initialize the path to MOSAIC and simulation name
-
-        Parameters
-        ----------
-        path_to_m : str
-            path to Eclipse MOSAIC
-        sim_name : str
-            Simulation name
-        is_unix : bool
-            Set True for UNIX based systems, set false for WINDOWS
-        """
         self._path_to_m = path_to_m
         self._sim_name = sim_name
 
@@ -141,6 +142,21 @@ class cid_mosaic:
 
         tree = ET.parse(xml_path)
         return tree.getroot()
+
+    def df2np(self, df: pd.DataFrame) -> np.array:
+        """Convert DataFrame to Numpy array
+
+        Parameters
+        ----------
+        df : pd.DataFrame
+            Input DataFrame
+
+        Returns
+        -------
+        np.array
+            np.asfarray(df1)
+        """
+        return np.asfarray(df)
 
     def retrieve_federate(self, federate: str, idx=None) -> str:
         """Retrieves the selected federate and initializes object attribute for
