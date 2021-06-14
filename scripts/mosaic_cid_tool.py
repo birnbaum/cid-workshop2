@@ -2,8 +2,11 @@ import subprocess
 import sys
 import os
 import re
-import pandas as pd
 import xml.etree.ElementTree as ET
+import json
+
+import pandas as pd
+import glom
 
 
 class mosaic_cid_tool:
@@ -138,6 +141,49 @@ class mosaic_cid_tool:
 
         tree = ET.parse(xml_path)
         return tree.getroot()
+
+    def retrieve_federate(self, federate: str, idx=None):
+
+        if federate == 'scenario':
+            path_to_fedjson = self._path_to_m + 'scenarios/' + self._sim_name \
+                + '/scenario_config.json'
+            self.fed_path = path_to_fedjson
+            foo = open(path_to_fedjson)
+            self.fed_name = 'scenario_config.json'
+            self.current_fed_setting = json.load(foo)
+            return path_to_fedjson
+
+        else:
+            path_to_json = self._path_to_m + 'scenarios/' + self._sim_name \
+                + '/' + federate
+
+            json_files = sorted([pos_json for pos_json
+                                 in os.listdir(path_to_json)
+                                 if pos_json.endswith('.json')])
+
+            if idx is None:
+                print(json_files)
+            else:
+                assert isinstance(idx, int)
+                path_to_fedjson = path_to_json + '/' + json_files[idx]
+                self.fed_path = path_to_fedjson
+                foo = open(path_to_fedjson)
+                self.fed_name = json_files[idx]
+                self.current_fed_setting = json.load(foo)
+                return path_to_fedjson
+
+    def set_federate_value(self, value, tree):
+        glom.assign(self.current_fed_setting, tree, val=value)
+
+    @property
+    def pprint_curr_fed(self):
+        print('Federate: {}'.format(self.fed_name))
+        print(json.dumps(self.current_fed_setting, indent=4, sort_keys=True))
+
+    @property
+    def get_federates(self):
+        path_to_settings = self._path_to_m + 'scenarios/' + self._sim_name
+        print(sorted([f.name for f in os.scandir(path_to_settings)]))
 
     @property
     def get_df_apps(self) -> list:

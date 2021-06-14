@@ -7,10 +7,10 @@ import seaborn as sns
 def main():
     sns.set()
     mosaic = mosaic_cid_tool('/home/onqi/Documents/eclipse_mosaic/',
-                             'Tiergarten')
-    mosaic.run_simulation()
+                             'Barnim')
+    # mosaic.run_simulation()
     mosaic.select_simulation_result()
-
+    """
     print(mosaic.get_df_labels)
     print(mosaic.get_df_events)
     print(mosaic.get_df_apps)
@@ -46,6 +46,13 @@ def main():
     plt.legend()
 
     plt.show()
+    """
+
+    # print(mosaic.get_settings)
+    mosaic.get_federates
+    mosaic.retrieve_federate('cell', idx=1)
+    mosaic.pprint_curr_fed
+    mosaic.set_federate_value('200 ms', 'globalNetwork.uplink.delay.delay')
 
     pass
 
