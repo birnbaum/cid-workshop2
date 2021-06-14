@@ -1,4 +1,4 @@
-from mosaic_cid_tool import mosaic_cid_tool
+from cid_mosaic import cid_mosaic
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -6,8 +6,8 @@ import seaborn as sns
 
 def main():
     sns.set()
-    mosaic = mosaic_cid_tool('/home/onqi/Documents/eclipse_mosaic/',
-                             'Barnim')
+    mosaic = cid_mosaic('/home/onqi/Documents/eclipse_mosaic/',
+                        'Barnim')
     # mosaic.run_simulation()
     mosaic.select_simulation_result()
     """
@@ -52,7 +52,9 @@ def main():
     mosaic.get_federates
     mosaic.retrieve_federate('cell', idx=1)
     mosaic.pprint_curr_fed
-    mosaic.set_federate_value('200 ms', 'globalNetwork.uplink.delay.delay')
+
+    mosaic.set_federate_value('globalNetwork.uplink.delay.delay',
+                              '100 ms')
 
     pass
 
