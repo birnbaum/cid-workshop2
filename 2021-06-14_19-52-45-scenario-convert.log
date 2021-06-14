@@ -1,0 +1,1060 @@
+19:52:45.506 INFO  - initializing database
+19:52:45.513 INFO  - filtering OSM file
+19:52:47.768 INFO  - It will be checked if ways overlap each other.
+19:52:47.792 INFO  - creating connections: 1.00%
+19:52:47.793 INFO  - creating connections: 2.00%
+19:52:47.794 INFO  - creating connections: 3.00%
+19:52:47.794 INFO  - creating connections: 4.00%
+19:52:47.794 INFO  - creating connections: 5.00%
+19:52:47.795 INFO  - creating connections: 6.00%
+19:52:47.796 INFO  - creating connections: 7.00%
+19:52:47.804 INFO  - creating connections: 8.00%
+19:52:47.804 INFO  - creating connections: 9.00%
+19:52:47.805 INFO  - creating connections: 10.00%
+19:52:47.806 INFO  - creating connections: 11.00%
+19:52:47.806 INFO  - creating connections: 12.00%
+19:52:47.807 INFO  - creating connections: 13.00%
+19:52:47.807 INFO  - creating connections: 14.00%
+19:52:47.808 INFO  - creating connections: 15.00%
+19:52:47.809 INFO  - creating connections: 16.00%
+19:52:47.809 INFO  - creating connections: 17.00%
+19:52:47.809 INFO  - creating connections: 18.00%
+19:52:47.810 INFO  - creating connections: 19.00%
+19:52:47.810 INFO  - creating connections: 20.00%
+19:52:47.810 INFO  - creating connections: 21.00%
+19:52:47.811 INFO  - creating connections: 22.00%
+19:52:47.812 INFO  - creating connections: 23.00%
+19:52:47.812 INFO  - creating connections: 24.00%
+19:52:47.818 INFO  - creating connections: 25.00%
+19:52:47.821 INFO  - creating connections: 26.00%
+19:52:47.823 INFO  - creating connections: 27.00%
+19:52:47.824 INFO  - creating connections: 28.00%
+19:52:47.825 INFO  - creating connections: 29.00%
+19:52:47.825 INFO  - creating connections: 30.00%
+19:52:47.826 INFO  - creating connections: 31.00%
+19:52:47.826 INFO  - creating connections: 32.00%
+19:52:47.826 INFO  - creating connections: 33.00%
+19:52:47.827 INFO  - creating connections: 34.00%
+19:52:47.827 INFO  - creating connections: 35.00%
+19:52:47.827 INFO  - creating connections: 36.00%
+19:52:47.832 INFO  - creating connections: 37.00%
+19:52:47.834 INFO  - creating connections: 38.00%
+19:52:47.835 INFO  - creating connections: 39.00%
+19:52:47.836 INFO  - creating connections: 40.00%
+19:52:47.836 INFO  - creating connections: 41.00%
+19:52:47.837 INFO  - creating connections: 42.00%
+19:52:47.839 INFO  - creating connections: 43.00%
+19:52:47.840 INFO  - creating connections: 44.00%
+19:52:47.841 INFO  - creating connections: 45.00%
+19:52:47.842 INFO  - creating connections: 46.00%
+19:52:47.842 INFO  - creating connections: 47.00%
+19:52:47.843 INFO  - creating connections: 48.00%
+19:52:47.844 INFO  - creating connections: 49.00%
+19:52:47.846 INFO  - creating connections: 50.00%
+19:52:47.846 INFO  - creating connections: 51.00%
+19:52:47.846 INFO  - creating connections: 52.00%
+19:52:47.846 INFO  - creating connections: 53.00%
+19:52:47.846 INFO  - creating connections: 54.00%
+19:52:47.847 INFO  - creating connections: 55.00%
+19:52:47.847 INFO  - creating connections: 56.00%
+19:52:47.848 INFO  - creating connections: 57.00%
+19:52:47.848 INFO  - creating connections: 58.00%
+19:52:47.849 INFO  - creating connections: 59.00%
+19:52:47.849 INFO  - creating connections: 60.00%
+19:52:47.849 INFO  - creating connections: 61.00%
+19:52:47.849 INFO  - creating connections: 62.00%
+19:52:47.852 INFO  - creating connections: 63.00%
+19:52:47.853 INFO  - creating connections: 64.00%
+19:52:47.855 INFO  - creating connections: 65.00%
+19:52:47.857 INFO  - creating connections: 66.00%
+19:52:47.858 INFO  - creating connections: 67.00%
+19:52:47.860 INFO  - creating connections: 68.00%
+19:52:47.860 INFO  - creating connections: 69.00%
+19:52:47.860 INFO  - creating connections: 70.00%
+19:52:47.860 INFO  - creating connections: 71.00%
+19:52:47.861 INFO  - creating connections: 72.00%
+19:52:47.861 INFO  - creating connections: 73.00%
+19:52:47.862 INFO  - creating connections: 74.00%
+19:52:47.862 INFO  - creating connections: 75.00%
+19:52:47.862 INFO  - creating connections: 76.00%
+19:52:47.863 INFO  - creating connections: 77.00%
+19:52:47.863 INFO  - creating connections: 78.00%
+19:52:47.864 INFO  - creating connections: 79.00%
+19:52:47.865 INFO  - creating connections: 80.00%
+19:52:47.868 INFO  - creating connections: 81.00%
+19:52:47.868 INFO  - creating connections: 82.00%
+19:52:47.868 INFO  - creating connections: 83.00%
+19:52:47.868 INFO  - creating connections: 84.00%
+19:52:47.868 INFO  - creating connections: 85.00%
+19:52:47.869 INFO  - creating connections: 86.00%
+19:52:47.869 INFO  - creating connections: 87.00%
+19:52:47.869 INFO  - creating connections: 88.00%
+19:52:47.869 INFO  - creating connections: 89.00%
+19:52:47.869 INFO  - creating connections: 90.00%
+19:52:47.870 INFO  - creating connections: 91.00%
+19:52:47.870 INFO  - creating connections: 92.00%
+19:52:47.873 INFO  - creating connections: 93.00%
+19:52:47.874 INFO  - creating connections: 94.00%
+19:52:47.874 INFO  - creating connections: 95.00%
+19:52:47.874 INFO  - creating connections: 96.00%
+19:52:47.875 INFO  - creating connections: 97.00%
+19:52:47.875 INFO  - creating connections: 98.00%
+19:52:47.876 INFO  - creating connections: 99.00%
+19:52:47.876 INFO  - creating connections: 100.00%
+19:52:47.885 WARN  - Didn't find ways or node for restriction (outside of scope?), restriction will be ignored for node id: 1553104
+19:52:47.885 WARN  - Didn't find ways or node for restriction (outside of scope?), restriction will be ignored for node id: 2199022
+19:52:47.893 WARN  - Didn't find ways or node for restriction (outside of scope?), restriction will be ignored for node id: 10320010
+19:52:47.893 WARN  - Didn't find ways or node for restriction (outside of scope?), restriction will be ignored for node id: 10773458
+19:52:48.124 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/application directory.
+19:52:48.124 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/cell directory.
+19:52:48.124 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/environment directory.
+19:52:48.124 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/mapping directory.
+19:52:48.124 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/ns3 directory.
+19:52:48.124 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/omnetpp directory.
+19:52:48.124 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/phabmacs directory.
+19:52:48.124 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/sns directory.
+19:52:48.125 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/sumo directory.
+19:52:48.125 INFO  - Created /home/onqi/Documents/cid-workshop2/ernstreuter/output directory.
+19:52:48.130 INFO  - Moving scenario DB to application directory.
+19:52:48.131 INFO  - Generating or copying ernstreuter.net.xml.
+19:52:48.132 INFO  - writing nodes information to: ernstreuter.nod.xml
+19:52:48.142 INFO  - writing node 1/340
+19:52:48.142 INFO  - writing node 2/340
+19:52:48.142 INFO  - writing node 3/340
+19:52:48.143 INFO  - writing node 4/340
+19:52:48.143 INFO  - writing node 5/340
+19:52:48.143 INFO  - writing node 6/340
+19:52:48.143 INFO  - writing node 7/340
+19:52:48.143 INFO  - writing node 8/340
+19:52:48.143 INFO  - writing node 9/340
+19:52:48.143 INFO  - writing node 10/340
+19:52:48.143 INFO  - writing node 11/340
+19:52:48.143 INFO  - writing node 12/340
+19:52:48.144 INFO  - writing node 13/340
+19:52:48.144 INFO  - writing node 14/340
+19:52:48.144 INFO  - writing node 15/340
+19:52:48.144 INFO  - writing node 16/340
+19:52:48.144 INFO  - writing node 17/340
+19:52:48.144 INFO  - writing node 18/340
+19:52:48.144 INFO  - writing node 19/340
+19:52:48.144 INFO  - writing node 20/340
+19:52:48.144 INFO  - writing node 21/340
+19:52:48.144 INFO  - writing node 22/340
+19:52:48.144 INFO  - writing node 23/340
+19:52:48.144 INFO  - writing node 24/340
+19:52:48.144 INFO  - writing node 25/340
+19:52:48.144 INFO  - writing node 26/340
+19:52:48.145 INFO  - writing node 27/340
+19:52:48.145 INFO  - writing node 28/340
+19:52:48.145 INFO  - writing node 29/340
+19:52:48.145 INFO  - writing node 30/340
+19:52:48.145 INFO  - writing node 31/340
+19:52:48.145 INFO  - writing node 32/340
+19:52:48.145 INFO  - writing node 33/340
+19:52:48.145 INFO  - writing node 34/340
+19:52:48.145 INFO  - writing node 35/340
+19:52:48.145 INFO  - writing node 36/340
+19:52:48.145 INFO  - writing node 37/340
+19:52:48.145 INFO  - writing node 38/340
+19:52:48.145 INFO  - writing node 39/340
+19:52:48.145 INFO  - writing node 40/340
+19:52:48.146 INFO  - writing node 41/340
+19:52:48.146 INFO  - writing node 42/340
+19:52:48.146 INFO  - writing node 43/340
+19:52:48.146 INFO  - writing node 44/340
+19:52:48.146 INFO  - writing node 45/340
+19:52:48.146 INFO  - writing node 46/340
+19:52:48.146 INFO  - writing node 47/340
+19:52:48.146 INFO  - writing node 48/340
+19:52:48.146 INFO  - writing node 49/340
+19:52:48.146 INFO  - writing node 50/340
+19:52:48.146 INFO  - writing node 51/340
+19:52:48.146 INFO  - writing node 52/340
+19:52:48.146 INFO  - writing node 53/340
+19:52:48.146 INFO  - writing node 54/340
+19:52:48.146 INFO  - writing node 55/340
+19:52:48.147 INFO  - writing node 56/340
+19:52:48.147 INFO  - writing node 57/340
+19:52:48.147 INFO  - writing node 58/340
+19:52:48.147 INFO  - writing node 59/340
+19:52:48.147 INFO  - writing node 60/340
+19:52:48.147 INFO  - writing node 61/340
+19:52:48.147 INFO  - writing node 62/340
+19:52:48.147 INFO  - writing node 63/340
+19:52:48.147 INFO  - writing node 64/340
+19:52:48.147 INFO  - writing node 65/340
+19:52:48.147 INFO  - writing node 66/340
+19:52:48.147 INFO  - writing node 67/340
+19:52:48.147 INFO  - writing node 68/340
+19:52:48.147 INFO  - writing node 69/340
+19:52:48.148 INFO  - writing node 70/340
+19:52:48.148 INFO  - writing node 71/340
+19:52:48.148 INFO  - writing node 72/340
+19:52:48.148 INFO  - writing node 73/340
+19:52:48.148 INFO  - writing node 74/340
+19:52:48.148 INFO  - writing node 75/340
+19:52:48.148 INFO  - writing node 76/340
+19:52:48.148 INFO  - writing node 77/340
+19:52:48.148 INFO  - writing node 78/340
+19:52:48.148 INFO  - writing node 79/340
+19:52:48.149 INFO  - writing node 80/340
+19:52:48.149 INFO  - writing node 81/340
+19:52:48.149 INFO  - writing node 82/340
+19:52:48.149 INFO  - writing node 83/340
+19:52:48.149 INFO  - writing node 84/340
+19:52:48.149 INFO  - writing node 85/340
+19:52:48.149 INFO  - writing node 86/340
+19:52:48.149 INFO  - writing node 87/340
+19:52:48.149 INFO  - writing node 88/340
+19:52:48.149 INFO  - writing node 89/340
+19:52:48.150 INFO  - writing node 90/340
+19:52:48.150 INFO  - writing node 91/340
+19:52:48.150 INFO  - writing node 92/340
+19:52:48.150 INFO  - writing node 93/340
+19:52:48.150 INFO  - writing node 94/340
+19:52:48.150 INFO  - writing node 95/340
+19:52:48.150 INFO  - writing node 96/340
+19:52:48.150 INFO  - writing node 97/340
+19:52:48.150 INFO  - writing node 98/340
+19:52:48.151 INFO  - writing node 99/340
+19:52:48.151 INFO  - writing node 100/340
+19:52:48.151 INFO  - writing node 101/340
+19:52:48.151 INFO  - writing node 102/340
+19:52:48.151 INFO  - writing node 103/340
+19:52:48.151 INFO  - writing node 104/340
+19:52:48.151 INFO  - writing node 105/340
+19:52:48.151 INFO  - writing node 106/340
+19:52:48.151 INFO  - writing node 107/340
+19:52:48.152 INFO  - writing node 108/340
+19:52:48.152 INFO  - writing node 109/340
+19:52:48.152 INFO  - writing node 110/340
+19:52:48.152 INFO  - writing node 111/340
+19:52:48.152 INFO  - writing node 112/340
+19:52:48.152 INFO  - writing node 113/340
+19:52:48.152 INFO  - writing node 114/340
+19:52:48.152 INFO  - writing node 115/340
+19:52:48.152 INFO  - writing node 116/340
+19:52:48.152 INFO  - writing node 117/340
+19:52:48.153 INFO  - writing node 118/340
+19:52:48.153 INFO  - writing node 119/340
+19:52:48.153 INFO  - writing node 120/340
+19:52:48.153 INFO  - writing node 121/340
+19:52:48.153 INFO  - writing node 122/340
+19:52:48.153 INFO  - writing node 123/340
+19:52:48.153 INFO  - writing node 124/340
+19:52:48.154 INFO  - writing node 125/340
+19:52:48.154 INFO  - writing node 126/340
+19:52:48.154 INFO  - writing node 127/340
+19:52:48.154 INFO  - writing node 128/340
+19:52:48.154 INFO  - writing node 129/340
+19:52:48.154 INFO  - writing node 130/340
+19:52:48.154 INFO  - writing node 131/340
+19:52:48.154 INFO  - writing node 132/340
+19:52:48.155 INFO  - writing node 133/340
+19:52:48.155 INFO  - writing node 134/340
+19:52:48.155 INFO  - writing node 135/340
+19:52:48.155 INFO  - writing node 136/340
+19:52:48.155 INFO  - writing node 137/340
+19:52:48.155 INFO  - writing node 138/340
+19:52:48.156 INFO  - writing node 139/340
+19:52:48.156 INFO  - writing node 140/340
+19:52:48.156 INFO  - writing node 141/340
+19:52:48.156 INFO  - writing node 142/340
+19:52:48.156 INFO  - writing node 143/340
+19:52:48.156 INFO  - writing node 144/340
+19:52:48.156 INFO  - writing node 145/340
+19:52:48.156 INFO  - writing node 146/340
+19:52:48.156 INFO  - writing node 147/340
+19:52:48.156 INFO  - writing node 148/340
+19:52:48.157 INFO  - writing node 149/340
+19:52:48.157 INFO  - writing node 150/340
+19:52:48.157 INFO  - writing node 151/340
+19:52:48.157 INFO  - writing node 152/340
+19:52:48.157 INFO  - writing node 153/340
+19:52:48.157 INFO  - writing node 154/340
+19:52:48.157 INFO  - writing node 155/340
+19:52:48.157 INFO  - writing node 156/340
+19:52:48.157 INFO  - writing node 157/340
+19:52:48.157 INFO  - writing node 158/340
+19:52:48.157 INFO  - writing node 159/340
+19:52:48.157 INFO  - writing node 160/340
+19:52:48.157 INFO  - writing node 161/340
+19:52:48.158 INFO  - writing node 162/340
+19:52:48.158 INFO  - writing node 163/340
+19:52:48.158 INFO  - writing node 164/340
+19:52:48.158 INFO  - writing node 165/340
+19:52:48.158 INFO  - writing node 166/340
+19:52:48.158 INFO  - writing node 167/340
+19:52:48.158 INFO  - writing node 168/340
+19:52:48.158 INFO  - writing node 169/340
+19:52:48.158 INFO  - writing node 170/340
+19:52:48.158 INFO  - writing node 171/340
+19:52:48.158 INFO  - writing node 172/340
+19:52:48.158 INFO  - writing node 173/340
+19:52:48.159 INFO  - writing node 174/340
+19:52:48.159 INFO  - writing node 175/340
+19:52:48.159 INFO  - writing node 176/340
+19:52:48.159 INFO  - writing node 177/340
+19:52:48.159 INFO  - writing node 178/340
+19:52:48.159 INFO  - writing node 179/340
+19:52:48.159 INFO  - writing node 180/340
+19:52:48.159 INFO  - writing node 181/340
+19:52:48.159 INFO  - writing node 182/340
+19:52:48.159 INFO  - writing node 183/340
+19:52:48.159 INFO  - writing node 184/340
+19:52:48.160 INFO  - writing node 185/340
+19:52:48.160 INFO  - writing node 186/340
+19:52:48.160 INFO  - writing node 187/340
+19:52:48.160 INFO  - writing node 188/340
+19:52:48.160 INFO  - writing node 189/340
+19:52:48.160 INFO  - writing node 190/340
+19:52:48.160 INFO  - writing node 191/340
+19:52:48.160 INFO  - writing node 192/340
+19:52:48.160 INFO  - writing node 193/340
+19:52:48.160 INFO  - writing node 194/340
+19:52:48.160 INFO  - writing node 195/340
+19:52:48.161 INFO  - writing node 196/340
+19:52:48.161 INFO  - writing node 197/340
+19:52:48.161 INFO  - writing node 198/340
+19:52:48.161 INFO  - writing node 199/340
+19:52:48.161 INFO  - writing node 200/340
+19:52:48.161 INFO  - writing node 201/340
+19:52:48.161 INFO  - writing node 202/340
+19:52:48.161 INFO  - writing node 203/340
+19:52:48.161 INFO  - writing node 204/340
+19:52:48.161 INFO  - writing node 205/340
+19:52:48.161 INFO  - writing node 206/340
+19:52:48.162 INFO  - writing node 207/340
+19:52:48.162 INFO  - writing node 208/340
+19:52:48.162 INFO  - writing node 209/340
+19:52:48.162 INFO  - writing node 210/340
+19:52:48.162 INFO  - writing node 211/340
+19:52:48.162 INFO  - writing node 212/340
+19:52:48.162 INFO  - writing node 213/340
+19:52:48.162 INFO  - writing node 214/340
+19:52:48.162 INFO  - writing node 215/340
+19:52:48.162 INFO  - writing node 216/340
+19:52:48.162 INFO  - writing node 217/340
+19:52:48.163 INFO  - writing node 218/340
+19:52:48.163 INFO  - writing node 219/340
+19:52:48.163 INFO  - writing node 220/340
+19:52:48.163 INFO  - writing node 221/340
+19:52:48.163 INFO  - writing node 222/340
+19:52:48.163 INFO  - writing node 223/340
+19:52:48.163 INFO  - writing node 224/340
+19:52:48.163 INFO  - writing node 225/340
+19:52:48.163 INFO  - writing node 226/340
+19:52:48.163 INFO  - writing node 227/340
+19:52:48.163 INFO  - writing node 228/340
+19:52:48.163 INFO  - writing node 229/340
+19:52:48.163 INFO  - writing node 230/340
+19:52:48.163 INFO  - writing node 231/340
+19:52:48.164 INFO  - writing node 232/340
+19:52:48.164 INFO  - writing node 233/340
+19:52:48.164 INFO  - writing node 234/340
+19:52:48.164 INFO  - writing node 235/340
+19:52:48.164 INFO  - writing node 236/340
+19:52:48.164 INFO  - writing node 237/340
+19:52:48.164 INFO  - writing node 238/340
+19:52:48.164 INFO  - writing node 239/340
+19:52:48.164 INFO  - writing node 240/340
+19:52:48.164 INFO  - writing node 241/340
+19:52:48.164 INFO  - writing node 242/340
+19:52:48.164 INFO  - writing node 243/340
+19:52:48.164 INFO  - writing node 244/340
+19:52:48.164 INFO  - writing node 245/340
+19:52:48.165 INFO  - writing node 246/340
+19:52:48.165 INFO  - writing node 247/340
+19:52:48.165 INFO  - writing node 248/340
+19:52:48.165 INFO  - writing node 249/340
+19:52:48.165 INFO  - writing node 250/340
+19:52:48.165 INFO  - writing node 251/340
+19:52:48.165 INFO  - writing node 252/340
+19:52:48.165 INFO  - writing node 253/340
+19:52:48.165 INFO  - writing node 254/340
+19:52:48.165 INFO  - writing node 255/340
+19:52:48.165 INFO  - writing node 256/340
+19:52:48.165 INFO  - writing node 257/340
+19:52:48.166 INFO  - writing node 258/340
+19:52:48.166 INFO  - writing node 259/340
+19:52:48.166 INFO  - writing node 260/340
+19:52:48.166 INFO  - writing node 261/340
+19:52:48.166 INFO  - writing node 262/340
+19:52:48.166 INFO  - writing node 263/340
+19:52:48.166 INFO  - writing node 264/340
+19:52:48.166 INFO  - writing node 265/340
+19:52:48.167 INFO  - writing node 266/340
+19:52:48.167 INFO  - writing node 267/340
+19:52:48.167 INFO  - writing node 268/340
+19:52:48.172 INFO  - writing node 269/340
+19:52:48.172 INFO  - writing node 270/340
+19:52:48.172 INFO  - writing node 271/340
+19:52:48.173 INFO  - writing node 272/340
+19:52:48.173 INFO  - writing node 273/340
+19:52:48.173 INFO  - writing node 274/340
+19:52:48.173 INFO  - writing node 275/340
+19:52:48.173 INFO  - writing node 276/340
+19:52:48.173 INFO  - writing node 277/340
+19:52:48.173 INFO  - writing node 278/340
+19:52:48.174 INFO  - writing node 279/340
+19:52:48.174 INFO  - writing node 280/340
+19:52:48.174 INFO  - writing node 281/340
+19:52:48.174 INFO  - writing node 282/340
+19:52:48.174 INFO  - writing node 283/340
+19:52:48.174 INFO  - writing node 284/340
+19:52:48.174 INFO  - writing node 285/340
+19:52:48.174 INFO  - writing node 286/340
+19:52:48.175 INFO  - writing node 287/340
+19:52:48.175 INFO  - writing node 288/340
+19:52:48.175 INFO  - writing node 289/340
+19:52:48.175 INFO  - writing node 290/340
+19:52:48.175 INFO  - writing node 291/340
+19:52:48.175 INFO  - writing node 292/340
+19:52:48.175 INFO  - writing node 293/340
+19:52:48.175 INFO  - writing node 294/340
+19:52:48.176 INFO  - writing node 295/340
+19:52:48.176 INFO  - writing node 296/340
+19:52:48.176 INFO  - writing node 297/340
+19:52:48.176 INFO  - writing node 298/340
+19:52:48.176 INFO  - writing node 299/340
+19:52:48.176 INFO  - writing node 300/340
+19:52:48.177 INFO  - writing node 301/340
+19:52:48.177 INFO  - writing node 302/340
+19:52:48.177 INFO  - writing node 303/340
+19:52:48.177 INFO  - writing node 304/340
+19:52:48.177 INFO  - writing node 305/340
+19:52:48.177 INFO  - writing node 306/340
+19:52:48.177 INFO  - writing node 307/340
+19:52:48.178 INFO  - writing node 308/340
+19:52:48.178 INFO  - writing node 309/340
+19:52:48.178 INFO  - writing node 310/340
+19:52:48.178 INFO  - writing node 311/340
+19:52:48.178 INFO  - writing node 312/340
+19:52:48.178 INFO  - writing node 313/340
+19:52:48.178 INFO  - writing node 314/340
+19:52:48.178 INFO  - writing node 315/340
+19:52:48.179 INFO  - writing node 316/340
+19:52:48.179 INFO  - writing node 317/340
+19:52:48.179 INFO  - writing node 318/340
+19:52:48.179 INFO  - writing node 319/340
+19:52:48.179 INFO  - writing node 320/340
+19:52:48.179 INFO  - writing node 321/340
+19:52:48.179 INFO  - writing node 322/340
+19:52:48.179 INFO  - writing node 323/340
+19:52:48.180 INFO  - writing node 324/340
+19:52:48.180 INFO  - writing node 325/340
+19:52:48.180 INFO  - writing node 326/340
+19:52:48.183 INFO  - writing node 327/340
+19:52:48.183 INFO  - writing node 328/340
+19:52:48.183 INFO  - writing node 329/340
+19:52:48.183 INFO  - writing node 330/340
+19:52:48.183 INFO  - writing node 331/340
+19:52:48.183 INFO  - writing node 332/340
+19:52:48.183 INFO  - writing node 333/340
+19:52:48.183 INFO  - writing node 334/340
+19:52:48.184 INFO  - writing node 335/340
+19:52:48.184 INFO  - writing node 336/340
+19:52:48.184 INFO  - writing node 337/340
+19:52:48.184 INFO  - writing node 338/340
+19:52:48.184 INFO  - writing node 339/340
+19:52:48.184 INFO  - writing node 340/340
+19:52:48.184 INFO  - -> successfully written 340 nodes
+19:52:48.184 INFO  - writing edges information to: ernstreuter.edg.xml
+19:52:48.266 INFO  - -> successfully written 568 edges
+19:52:48.267 INFO  - writing turn information to: ernstreuter.con.xml
+19:52:48.267 INFO  - writing turn information for connection 1/568
+19:52:48.267 INFO  - writing turn information for connection 2/568
+19:52:48.267 INFO  - writing turn information for connection 3/568
+19:52:48.267 INFO  - writing turn information for connection 4/568
+19:52:48.267 INFO  - writing turn information for connection 5/568
+19:52:48.267 INFO  - writing turn information for connection 6/568
+19:52:48.267 INFO  - writing turn information for connection 7/568
+19:52:48.267 INFO  - writing turn information for connection 8/568
+19:52:48.267 INFO  - writing turn information for connection 9/568
+19:52:48.267 INFO  - writing turn information for connection 10/568
+19:52:48.267 INFO  - writing turn information for connection 11/568
+19:52:48.267 INFO  - writing turn information for connection 12/568
+19:52:48.267 INFO  - writing turn information for connection 13/568
+19:52:48.267 INFO  - writing turn information for connection 14/568
+19:52:48.267 INFO  - writing turn information for connection 15/568
+19:52:48.267 INFO  - writing turn information for connection 16/568
+19:52:48.268 INFO  - writing turn information for connection 17/568
+19:52:48.268 INFO  - writing turn information for connection 18/568
+19:52:48.268 INFO  - writing turn information for connection 19/568
+19:52:48.268 INFO  - writing turn information for connection 20/568
+19:52:48.268 INFO  - writing turn information for connection 21/568
+19:52:48.268 INFO  - writing turn information for connection 22/568
+19:52:48.268 INFO  - writing turn information for connection 23/568
+19:52:48.268 INFO  - writing turn information for connection 24/568
+19:52:48.268 INFO  - writing turn information for connection 25/568
+19:52:48.268 INFO  - writing turn information for connection 26/568
+19:52:48.268 INFO  - writing turn information for connection 27/568
+19:52:48.268 INFO  - writing turn information for connection 28/568
+19:52:48.268 INFO  - writing turn information for connection 29/568
+19:52:48.268 INFO  - writing turn information for connection 30/568
+19:52:48.268 INFO  - writing turn information for connection 31/568
+19:52:48.268 INFO  - writing turn information for connection 32/568
+19:52:48.268 INFO  - writing turn information for connection 33/568
+19:52:48.268 INFO  - writing turn information for connection 34/568
+19:52:48.268 INFO  - writing turn information for connection 35/568
+19:52:48.268 INFO  - writing turn information for connection 36/568
+19:52:48.268 INFO  - writing turn information for connection 37/568
+19:52:48.268 INFO  - writing turn information for connection 38/568
+19:52:48.268 INFO  - writing turn information for connection 39/568
+19:52:48.268 INFO  - writing turn information for connection 40/568
+19:52:48.268 INFO  - writing turn information for connection 41/568
+19:52:48.268 INFO  - writing turn information for connection 42/568
+19:52:48.268 INFO  - writing turn information for connection 43/568
+19:52:48.268 INFO  - writing turn information for connection 44/568
+19:52:48.269 INFO  - writing turn information for connection 45/568
+19:52:48.269 INFO  - writing turn information for connection 46/568
+19:52:48.269 INFO  - writing turn information for connection 47/568
+19:52:48.269 INFO  - writing turn information for connection 48/568
+19:52:48.269 INFO  - writing turn information for connection 49/568
+19:52:48.269 INFO  - writing turn information for connection 50/568
+19:52:48.269 INFO  - writing turn information for connection 51/568
+19:52:48.269 INFO  - writing turn information for connection 52/568
+19:52:48.269 INFO  - writing turn information for connection 53/568
+19:52:48.269 INFO  - writing turn information for connection 54/568
+19:52:48.269 INFO  - writing turn information for connection 55/568
+19:52:48.269 INFO  - writing turn information for connection 56/568
+19:52:48.269 INFO  - writing turn information for connection 57/568
+19:52:48.269 INFO  - writing turn information for connection 58/568
+19:52:48.269 INFO  - writing turn information for connection 59/568
+19:52:48.269 INFO  - writing turn information for connection 60/568
+19:52:48.269 INFO  - writing turn information for connection 61/568
+19:52:48.269 INFO  - writing turn information for connection 62/568
+19:52:48.269 INFO  - writing turn information for connection 63/568
+19:52:48.269 INFO  - writing turn information for connection 64/568
+19:52:48.269 INFO  - writing turn information for connection 65/568
+19:52:48.269 INFO  - writing turn information for connection 66/568
+19:52:48.269 INFO  - writing turn information for connection 67/568
+19:52:48.269 INFO  - writing turn information for connection 68/568
+19:52:48.269 INFO  - writing turn information for connection 69/568
+19:52:48.269 INFO  - writing turn information for connection 70/568
+19:52:48.269 INFO  - writing turn information for connection 71/568
+19:52:48.270 INFO  - writing turn information for connection 72/568
+19:52:48.270 INFO  - writing turn information for connection 73/568
+19:52:48.270 INFO  - writing turn information for connection 74/568
+19:52:48.270 INFO  - writing turn information for connection 75/568
+19:52:48.270 INFO  - writing turn information for connection 76/568
+19:52:48.270 INFO  - writing turn information for connection 77/568
+19:52:48.270 INFO  - writing turn information for connection 78/568
+19:52:48.270 INFO  - writing turn information for connection 79/568
+19:52:48.270 INFO  - writing turn information for connection 80/568
+19:52:48.270 INFO  - writing turn information for connection 81/568
+19:52:48.270 INFO  - writing turn information for connection 82/568
+19:52:48.270 INFO  - writing turn information for connection 83/568
+19:52:48.270 INFO  - writing turn information for connection 84/568
+19:52:48.270 INFO  - writing turn information for connection 85/568
+19:52:48.270 INFO  - writing turn information for connection 86/568
+19:52:48.270 INFO  - writing turn information for connection 87/568
+19:52:48.270 INFO  - writing turn information for connection 88/568
+19:52:48.270 INFO  - writing turn information for connection 89/568
+19:52:48.270 INFO  - writing turn information for connection 90/568
+19:52:48.270 INFO  - writing turn information for connection 91/568
+19:52:48.270 INFO  - writing turn information for connection 92/568
+19:52:48.270 INFO  - writing turn information for connection 93/568
+19:52:48.270 INFO  - writing turn information for connection 94/568
+19:52:48.271 INFO  - writing turn information for connection 95/568
+19:52:48.271 INFO  - writing turn information for connection 96/568
+19:52:48.271 INFO  - writing turn information for connection 97/568
+19:52:48.271 INFO  - writing turn information for connection 98/568
+19:52:48.271 INFO  - writing turn information for connection 99/568
+19:52:48.271 INFO  - writing turn information for connection 100/568
+19:52:48.271 INFO  - writing turn information for connection 101/568
+19:52:48.271 INFO  - writing turn information for connection 102/568
+19:52:48.271 INFO  - writing turn information for connection 103/568
+19:52:48.271 INFO  - writing turn information for connection 104/568
+19:52:48.271 INFO  - writing turn information for connection 105/568
+19:52:48.271 INFO  - writing turn information for connection 106/568
+19:52:48.271 INFO  - writing turn information for connection 107/568
+19:52:48.271 INFO  - writing turn information for connection 108/568
+19:52:48.271 INFO  - writing turn information for connection 109/568
+19:52:48.271 INFO  - writing turn information for connection 110/568
+19:52:48.271 INFO  - writing turn information for connection 111/568
+19:52:48.271 INFO  - writing turn information for connection 112/568
+19:52:48.271 INFO  - writing turn information for connection 113/568
+19:52:48.271 INFO  - writing turn information for connection 114/568
+19:52:48.271 INFO  - writing turn information for connection 115/568
+19:52:48.271 INFO  - writing turn information for connection 116/568
+19:52:48.271 INFO  - writing turn information for connection 117/568
+19:52:48.271 INFO  - writing turn information for connection 118/568
+19:52:48.271 INFO  - writing turn information for connection 119/568
+19:52:48.271 INFO  - writing turn information for connection 120/568
+19:52:48.271 INFO  - writing turn information for connection 121/568
+19:52:48.272 INFO  - writing turn information for connection 122/568
+19:52:48.272 INFO  - writing turn information for connection 123/568
+19:52:48.272 INFO  - writing turn information for connection 124/568
+19:52:48.272 INFO  - writing turn information for connection 125/568
+19:52:48.272 INFO  - writing turn information for connection 126/568
+19:52:48.272 INFO  - writing turn information for connection 127/568
+19:52:48.272 INFO  - writing turn information for connection 128/568
+19:52:48.272 INFO  - writing turn information for connection 129/568
+19:52:48.272 INFO  - writing turn information for connection 130/568
+19:52:48.272 INFO  - writing turn information for connection 131/568
+19:52:48.272 INFO  - writing turn information for connection 132/568
+19:52:48.272 INFO  - writing turn information for connection 133/568
+19:52:48.272 INFO  - writing turn information for connection 134/568
+19:52:48.272 INFO  - writing turn information for connection 135/568
+19:52:48.272 INFO  - writing turn information for connection 136/568
+19:52:48.272 INFO  - writing turn information for connection 137/568
+19:52:48.272 INFO  - writing turn information for connection 138/568
+19:52:48.272 INFO  - writing turn information for connection 139/568
+19:52:48.272 INFO  - writing turn information for connection 140/568
+19:52:48.272 INFO  - writing turn information for connection 141/568
+19:52:48.272 INFO  - writing turn information for connection 142/568
+19:52:48.272 INFO  - writing turn information for connection 143/568
+19:52:48.272 INFO  - writing turn information for connection 144/568
+19:52:48.272 INFO  - writing turn information for connection 145/568
+19:52:48.272 INFO  - writing turn information for connection 146/568
+19:52:48.272 INFO  - writing turn information for connection 147/568
+19:52:48.272 INFO  - writing turn information for connection 148/568
+19:52:48.272 INFO  - writing turn information for connection 149/568
+19:52:48.272 INFO  - writing turn information for connection 150/568
+19:52:48.272 INFO  - writing turn information for connection 151/568
+19:52:48.273 INFO  - writing turn information for connection 152/568
+19:52:48.273 INFO  - writing turn information for connection 153/568
+19:52:48.273 INFO  - writing turn information for connection 154/568
+19:52:48.273 INFO  - writing turn information for connection 155/568
+19:52:48.273 INFO  - writing turn information for connection 156/568
+19:52:48.273 INFO  - writing turn information for connection 157/568
+19:52:48.273 INFO  - writing turn information for connection 158/568
+19:52:48.273 INFO  - writing turn information for connection 159/568
+19:52:48.273 INFO  - writing turn information for connection 160/568
+19:52:48.273 INFO  - writing turn information for connection 161/568
+19:52:48.273 INFO  - writing turn information for connection 162/568
+19:52:48.273 INFO  - writing turn information for connection 163/568
+19:52:48.273 INFO  - writing turn information for connection 164/568
+19:52:48.273 INFO  - writing turn information for connection 165/568
+19:52:48.273 INFO  - writing turn information for connection 166/568
+19:52:48.273 INFO  - writing turn information for connection 167/568
+19:52:48.273 INFO  - writing turn information for connection 168/568
+19:52:48.273 INFO  - writing turn information for connection 169/568
+19:52:48.273 INFO  - writing turn information for connection 170/568
+19:52:48.273 INFO  - writing turn information for connection 171/568
+19:52:48.273 INFO  - writing turn information for connection 172/568
+19:52:48.273 INFO  - writing turn information for connection 173/568
+19:52:48.273 INFO  - writing turn information for connection 174/568
+19:52:48.273 INFO  - writing turn information for connection 175/568
+19:52:48.273 INFO  - writing turn information for connection 176/568
+19:52:48.273 INFO  - writing turn information for connection 177/568
+19:52:48.273 INFO  - writing turn information for connection 178/568
+19:52:48.273 INFO  - writing turn information for connection 179/568
+19:52:48.274 INFO  - writing turn information for connection 180/568
+19:52:48.274 INFO  - writing turn information for connection 181/568
+19:52:48.274 INFO  - writing turn information for connection 182/568
+19:52:48.274 INFO  - writing turn information for connection 183/568
+19:52:48.274 INFO  - writing turn information for connection 184/568
+19:52:48.274 INFO  - writing turn information for connection 185/568
+19:52:48.274 INFO  - writing turn information for connection 186/568
+19:52:48.274 INFO  - writing turn information for connection 187/568
+19:52:48.274 INFO  - writing turn information for connection 188/568
+19:52:48.274 INFO  - writing turn information for connection 189/568
+19:52:48.274 INFO  - writing turn information for connection 190/568
+19:52:48.274 INFO  - writing turn information for connection 191/568
+19:52:48.274 INFO  - writing turn information for connection 192/568
+19:52:48.274 INFO  - writing turn information for connection 193/568
+19:52:48.274 INFO  - writing turn information for connection 194/568
+19:52:48.274 INFO  - writing turn information for connection 195/568
+19:52:48.274 INFO  - writing turn information for connection 196/568
+19:52:48.274 INFO  - writing turn information for connection 197/568
+19:52:48.274 INFO  - writing turn information for connection 198/568
+19:52:48.274 INFO  - writing turn information for connection 199/568
+19:52:48.274 INFO  - writing turn information for connection 200/568
+19:52:48.274 INFO  - writing turn information for connection 201/568
+19:52:48.274 INFO  - writing turn information for connection 202/568
+19:52:48.274 INFO  - writing turn information for connection 203/568
+19:52:48.274 INFO  - writing turn information for connection 204/568
+19:52:48.274 INFO  - writing turn information for connection 205/568
+19:52:48.274 INFO  - writing turn information for connection 206/568
+19:52:48.274 INFO  - writing turn information for connection 207/568
+19:52:48.274 INFO  - writing turn information for connection 208/568
+19:52:48.274 INFO  - writing turn information for connection 209/568
+19:52:48.274 INFO  - writing turn information for connection 210/568
+19:52:48.274 INFO  - writing turn information for connection 211/568
+19:52:48.275 INFO  - writing turn information for connection 212/568
+19:52:48.275 INFO  - writing turn information for connection 213/568
+19:52:48.275 INFO  - writing turn information for connection 214/568
+19:52:48.275 INFO  - writing turn information for connection 215/568
+19:52:48.275 INFO  - writing turn information for connection 216/568
+19:52:48.275 INFO  - writing turn information for connection 217/568
+19:52:48.275 INFO  - writing turn information for connection 218/568
+19:52:48.275 INFO  - writing turn information for connection 219/568
+19:52:48.275 INFO  - writing turn information for connection 220/568
+19:52:48.275 INFO  - writing turn information for connection 221/568
+19:52:48.275 INFO  - writing turn information for connection 222/568
+19:52:48.275 INFO  - writing turn information for connection 223/568
+19:52:48.275 INFO  - writing turn information for connection 224/568
+19:52:48.275 INFO  - writing turn information for connection 225/568
+19:52:48.275 INFO  - writing turn information for connection 226/568
+19:52:48.275 INFO  - writing turn information for connection 227/568
+19:52:48.275 INFO  - writing turn information for connection 228/568
+19:52:48.275 INFO  - writing turn information for connection 229/568
+19:52:48.275 INFO  - writing turn information for connection 230/568
+19:52:48.275 INFO  - writing turn information for connection 231/568
+19:52:48.275 INFO  - writing turn information for connection 232/568
+19:52:48.275 INFO  - writing turn information for connection 233/568
+19:52:48.275 INFO  - writing turn information for connection 234/568
+19:52:48.275 INFO  - writing turn information for connection 235/568
+19:52:48.275 INFO  - writing turn information for connection 236/568
+19:52:48.275 INFO  - writing turn information for connection 237/568
+19:52:48.275 INFO  - writing turn information for connection 238/568
+19:52:48.275 INFO  - writing turn information for connection 239/568
+19:52:48.275 INFO  - writing turn information for connection 240/568
+19:52:48.275 INFO  - writing turn information for connection 241/568
+19:52:48.275 INFO  - writing turn information for connection 242/568
+19:52:48.275 INFO  - writing turn information for connection 243/568
+19:52:48.276 INFO  - writing turn information for connection 244/568
+19:52:48.276 INFO  - writing turn information for connection 245/568
+19:52:48.276 INFO  - writing turn information for connection 246/568
+19:52:48.276 INFO  - writing turn information for connection 247/568
+19:52:48.276 INFO  - writing turn information for connection 248/568
+19:52:48.276 INFO  - writing turn information for connection 249/568
+19:52:48.276 INFO  - writing turn information for connection 250/568
+19:52:48.276 INFO  - writing turn information for connection 251/568
+19:52:48.276 INFO  - writing turn information for connection 252/568
+19:52:48.276 INFO  - writing turn information for connection 253/568
+19:52:48.276 INFO  - writing turn information for connection 254/568
+19:52:48.276 INFO  - writing turn information for connection 255/568
+19:52:48.276 INFO  - writing turn information for connection 256/568
+19:52:48.276 INFO  - writing turn information for connection 257/568
+19:52:48.276 INFO  - writing turn information for connection 258/568
+19:52:48.276 INFO  - writing turn information for connection 259/568
+19:52:48.276 INFO  - writing turn information for connection 260/568
+19:52:48.276 INFO  - writing turn information for connection 261/568
+19:52:48.276 INFO  - writing turn information for connection 262/568
+19:52:48.276 INFO  - writing turn information for connection 263/568
+19:52:48.276 INFO  - writing turn information for connection 264/568
+19:52:48.276 INFO  - writing turn information for connection 265/568
+19:52:48.276 INFO  - writing turn information for connection 266/568
+19:52:48.277 INFO  - writing turn information for connection 267/568
+19:52:48.277 INFO  - writing turn information for connection 268/568
+19:52:48.277 INFO  - writing turn information for connection 269/568
+19:52:48.277 INFO  - writing turn information for connection 270/568
+19:52:48.277 INFO  - writing turn information for connection 271/568
+19:52:48.277 INFO  - writing turn information for connection 272/568
+19:52:48.277 INFO  - writing turn information for connection 273/568
+19:52:48.277 INFO  - writing turn information for connection 274/568
+19:52:48.277 INFO  - writing turn information for connection 275/568
+19:52:48.277 INFO  - writing turn information for connection 276/568
+19:52:48.277 INFO  - writing turn information for connection 277/568
+19:52:48.277 INFO  - writing turn information for connection 278/568
+19:52:48.277 INFO  - writing turn information for connection 279/568
+19:52:48.277 INFO  - writing turn information for connection 280/568
+19:52:48.278 INFO  - writing turn information for connection 281/568
+19:52:48.278 INFO  - writing turn information for connection 282/568
+19:52:48.278 INFO  - writing turn information for connection 283/568
+19:52:48.278 INFO  - writing turn information for connection 284/568
+19:52:48.278 INFO  - writing turn information for connection 285/568
+19:52:48.278 INFO  - writing turn information for connection 286/568
+19:52:48.278 INFO  - writing turn information for connection 287/568
+19:52:48.278 INFO  - writing turn information for connection 288/568
+19:52:48.279 INFO  - writing turn information for connection 289/568
+19:52:48.279 INFO  - writing turn information for connection 290/568
+19:52:48.279 INFO  - writing turn information for connection 291/568
+19:52:48.279 INFO  - writing turn information for connection 292/568
+19:52:48.279 INFO  - writing turn information for connection 293/568
+19:52:48.279 INFO  - writing turn information for connection 294/568
+19:52:48.279 INFO  - writing turn information for connection 295/568
+19:52:48.279 INFO  - writing turn information for connection 296/568
+19:52:48.279 INFO  - writing turn information for connection 297/568
+19:52:48.279 INFO  - writing turn information for connection 298/568
+19:52:48.280 INFO  - writing turn information for connection 299/568
+19:52:48.280 INFO  - writing turn information for connection 300/568
+19:52:48.280 INFO  - writing turn information for connection 301/568
+19:52:48.280 INFO  - writing turn information for connection 302/568
+19:52:48.280 INFO  - writing turn information for connection 303/568
+19:52:48.280 INFO  - writing turn information for connection 304/568
+19:52:48.280 INFO  - writing turn information for connection 305/568
+19:52:48.280 INFO  - writing turn information for connection 306/568
+19:52:48.281 INFO  - writing turn information for connection 307/568
+19:52:48.281 INFO  - writing turn information for connection 308/568
+19:52:48.281 INFO  - writing turn information for connection 309/568
+19:52:48.281 INFO  - writing turn information for connection 310/568
+19:52:48.281 INFO  - writing turn information for connection 311/568
+19:52:48.281 INFO  - writing turn information for connection 312/568
+19:52:48.281 INFO  - writing turn information for connection 313/568
+19:52:48.281 INFO  - writing turn information for connection 314/568
+19:52:48.281 INFO  - writing turn information for connection 315/568
+19:52:48.281 INFO  - writing turn information for connection 316/568
+19:52:48.281 INFO  - writing turn information for connection 317/568
+19:52:48.281 INFO  - writing turn information for connection 318/568
+19:52:48.281 INFO  - writing turn information for connection 319/568
+19:52:48.281 INFO  - writing turn information for connection 320/568
+19:52:48.281 INFO  - writing turn information for connection 321/568
+19:52:48.281 INFO  - writing turn information for connection 322/568
+19:52:48.281 INFO  - writing turn information for connection 323/568
+19:52:48.281 INFO  - writing turn information for connection 324/568
+19:52:48.281 INFO  - writing turn information for connection 325/568
+19:52:48.282 INFO  - writing turn information for connection 326/568
+19:52:48.282 INFO  - writing turn information for connection 327/568
+19:52:48.282 INFO  - writing turn information for connection 328/568
+19:52:48.282 INFO  - writing turn information for connection 329/568
+19:52:48.282 INFO  - writing turn information for connection 330/568
+19:52:48.282 INFO  - writing turn information for connection 331/568
+19:52:48.282 INFO  - writing turn information for connection 332/568
+19:52:48.282 INFO  - writing turn information for connection 333/568
+19:52:48.282 INFO  - writing turn information for connection 334/568
+19:52:48.282 INFO  - writing turn information for connection 335/568
+19:52:48.282 INFO  - writing turn information for connection 336/568
+19:52:48.282 INFO  - writing turn information for connection 337/568
+19:52:48.282 INFO  - writing turn information for connection 338/568
+19:52:48.282 INFO  - writing turn information for connection 339/568
+19:52:48.282 INFO  - writing turn information for connection 340/568
+19:52:48.282 INFO  - writing turn information for connection 341/568
+19:52:48.282 INFO  - writing turn information for connection 342/568
+19:52:48.282 INFO  - writing turn information for connection 343/568
+19:52:48.282 INFO  - writing turn information for connection 344/568
+19:52:48.283 INFO  - writing turn information for connection 345/568
+19:52:48.283 INFO  - writing turn information for connection 346/568
+19:52:48.283 INFO  - writing turn information for connection 347/568
+19:52:48.283 INFO  - writing turn information for connection 348/568
+19:52:48.283 INFO  - writing turn information for connection 349/568
+19:52:48.283 INFO  - writing turn information for connection 350/568
+19:52:48.283 INFO  - writing turn information for connection 351/568
+19:52:48.283 INFO  - writing turn information for connection 352/568
+19:52:48.283 INFO  - writing turn information for connection 353/568
+19:52:48.283 INFO  - writing turn information for connection 354/568
+19:52:48.283 INFO  - writing turn information for connection 355/568
+19:52:48.283 INFO  - writing turn information for connection 356/568
+19:52:48.283 INFO  - writing turn information for connection 357/568
+19:52:48.284 INFO  - writing turn information for connection 358/568
+19:52:48.284 INFO  - writing turn information for connection 359/568
+19:52:48.284 INFO  - writing turn information for connection 360/568
+19:52:48.284 INFO  - writing turn information for connection 361/568
+19:52:48.284 INFO  - writing turn information for connection 362/568
+19:52:48.284 INFO  - writing turn information for connection 363/568
+19:52:48.284 INFO  - writing turn information for connection 364/568
+19:52:48.284 INFO  - writing turn information for connection 365/568
+19:52:48.284 INFO  - writing turn information for connection 366/568
+19:52:48.284 INFO  - writing turn information for connection 367/568
+19:52:48.284 INFO  - writing turn information for connection 368/568
+19:52:48.284 INFO  - writing turn information for connection 369/568
+19:52:48.284 INFO  - writing turn information for connection 370/568
+19:52:48.284 INFO  - writing turn information for connection 371/568
+19:52:48.284 INFO  - writing turn information for connection 372/568
+19:52:48.284 INFO  - writing turn information for connection 373/568
+19:52:48.284 INFO  - writing turn information for connection 374/568
+19:52:48.284 INFO  - writing turn information for connection 375/568
+19:52:48.284 INFO  - writing turn information for connection 376/568
+19:52:48.284 INFO  - writing turn information for connection 377/568
+19:52:48.285 INFO  - writing turn information for connection 378/568
+19:52:48.285 INFO  - writing turn information for connection 379/568
+19:52:48.285 INFO  - writing turn information for connection 380/568
+19:52:48.285 INFO  - writing turn information for connection 381/568
+19:52:48.285 INFO  - writing turn information for connection 382/568
+19:52:48.285 INFO  - writing turn information for connection 383/568
+19:52:48.285 INFO  - writing turn information for connection 384/568
+19:52:48.285 INFO  - writing turn information for connection 385/568
+19:52:48.285 INFO  - writing turn information for connection 386/568
+19:52:48.285 INFO  - writing turn information for connection 387/568
+19:52:48.285 INFO  - writing turn information for connection 388/568
+19:52:48.285 INFO  - writing turn information for connection 389/568
+19:52:48.285 INFO  - writing turn information for connection 390/568
+19:52:48.285 INFO  - writing turn information for connection 391/568
+19:52:48.285 INFO  - writing turn information for connection 392/568
+19:52:48.285 INFO  - writing turn information for connection 393/568
+19:52:48.285 INFO  - writing turn information for connection 394/568
+19:52:48.285 INFO  - writing turn information for connection 395/568
+19:52:48.285 INFO  - writing turn information for connection 396/568
+19:52:48.285 INFO  - writing turn information for connection 397/568
+19:52:48.285 INFO  - writing turn information for connection 398/568
+19:52:48.285 INFO  - writing turn information for connection 399/568
+19:52:48.285 INFO  - writing turn information for connection 400/568
+19:52:48.285 INFO  - writing turn information for connection 401/568
+19:52:48.285 INFO  - writing turn information for connection 402/568
+19:52:48.285 INFO  - writing turn information for connection 403/568
+19:52:48.285 INFO  - writing turn information for connection 404/568
+19:52:48.286 INFO  - writing turn information for connection 405/568
+19:52:48.286 INFO  - writing turn information for connection 406/568
+19:52:48.286 INFO  - writing turn information for connection 407/568
+19:52:48.286 INFO  - writing turn information for connection 408/568
+19:52:48.286 INFO  - writing turn information for connection 409/568
+19:52:48.286 INFO  - writing turn information for connection 410/568
+19:52:48.286 INFO  - writing turn information for connection 411/568
+19:52:48.286 INFO  - writing turn information for connection 412/568
+19:52:48.286 INFO  - writing turn information for connection 413/568
+19:52:48.286 INFO  - writing turn information for connection 414/568
+19:52:48.286 INFO  - writing turn information for connection 415/568
+19:52:48.286 INFO  - writing turn information for connection 416/568
+19:52:48.286 INFO  - writing turn information for connection 417/568
+19:52:48.286 INFO  - writing turn information for connection 418/568
+19:52:48.286 INFO  - writing turn information for connection 419/568
+19:52:48.286 INFO  - writing turn information for connection 420/568
+19:52:48.286 INFO  - writing turn information for connection 421/568
+19:52:48.286 INFO  - writing turn information for connection 422/568
+19:52:48.286 INFO  - writing turn information for connection 423/568
+19:52:48.286 INFO  - writing turn information for connection 424/568
+19:52:48.286 INFO  - writing turn information for connection 425/568
+19:52:48.286 INFO  - writing turn information for connection 426/568
+19:52:48.286 INFO  - writing turn information for connection 427/568
+19:52:48.286 INFO  - writing turn information for connection 428/568
+19:52:48.286 INFO  - writing turn information for connection 429/568
+19:52:48.287 INFO  - writing turn information for connection 430/568
+19:52:48.287 INFO  - writing turn information for connection 431/568
+19:52:48.287 INFO  - writing turn information for connection 432/568
+19:52:48.287 INFO  - writing turn information for connection 433/568
+19:52:48.287 INFO  - writing turn information for connection 434/568
+19:52:48.287 INFO  - writing turn information for connection 435/568
+19:52:48.287 INFO  - writing turn information for connection 436/568
+19:52:48.287 INFO  - writing turn information for connection 437/568
+19:52:48.287 INFO  - writing turn information for connection 438/568
+19:52:48.287 INFO  - writing turn information for connection 439/568
+19:52:48.287 INFO  - writing turn information for connection 440/568
+19:52:48.287 INFO  - writing turn information for connection 441/568
+19:52:48.287 INFO  - writing turn information for connection 442/568
+19:52:48.287 INFO  - writing turn information for connection 443/568
+19:52:48.287 INFO  - writing turn information for connection 444/568
+19:52:48.287 INFO  - writing turn information for connection 445/568
+19:52:48.287 INFO  - writing turn information for connection 446/568
+19:52:48.287 INFO  - writing turn information for connection 447/568
+19:52:48.287 INFO  - writing turn information for connection 448/568
+19:52:48.287 INFO  - writing turn information for connection 449/568
+19:52:48.287 INFO  - writing turn information for connection 450/568
+19:52:48.287 INFO  - writing turn information for connection 451/568
+19:52:48.287 INFO  - writing turn information for connection 452/568
+19:52:48.287 INFO  - writing turn information for connection 453/568
+19:52:48.287 INFO  - writing turn information for connection 454/568
+19:52:48.287 INFO  - writing turn information for connection 455/568
+19:52:48.287 INFO  - writing turn information for connection 456/568
+19:52:48.287 INFO  - writing turn information for connection 457/568
+19:52:48.288 INFO  - writing turn information for connection 458/568
+19:52:48.288 INFO  - writing turn information for connection 459/568
+19:52:48.288 INFO  - writing turn information for connection 460/568
+19:52:48.288 INFO  - writing turn information for connection 461/568
+19:52:48.288 INFO  - writing turn information for connection 462/568
+19:52:48.288 INFO  - writing turn information for connection 463/568
+19:52:48.288 INFO  - writing turn information for connection 464/568
+19:52:48.288 INFO  - writing turn information for connection 465/568
+19:52:48.288 INFO  - writing turn information for connection 466/568
+19:52:48.288 INFO  - writing turn information for connection 467/568
+19:52:48.288 INFO  - writing turn information for connection 468/568
+19:52:48.288 INFO  - writing turn information for connection 469/568
+19:52:48.288 INFO  - writing turn information for connection 470/568
+19:52:48.288 INFO  - writing turn information for connection 471/568
+19:52:48.288 INFO  - writing turn information for connection 472/568
+19:52:48.288 INFO  - writing turn information for connection 473/568
+19:52:48.288 INFO  - writing turn information for connection 474/568
+19:52:48.288 INFO  - writing turn information for connection 475/568
+19:52:48.288 INFO  - writing turn information for connection 476/568
+19:52:48.288 INFO  - writing turn information for connection 477/568
+19:52:48.288 INFO  - writing turn information for connection 478/568
+19:52:48.288 INFO  - writing turn information for connection 479/568
+19:52:48.288 INFO  - writing turn information for connection 480/568
+19:52:48.288 INFO  - writing turn information for connection 481/568
+19:52:48.288 INFO  - writing turn information for connection 482/568
+19:52:48.288 INFO  - writing turn information for connection 483/568
+19:52:48.288 INFO  - writing turn information for connection 484/568
+19:52:48.288 INFO  - writing turn information for connection 485/568
+19:52:48.288 INFO  - writing turn information for connection 486/568
+19:52:48.289 INFO  - writing turn information for connection 487/568
+19:52:48.289 INFO  - writing turn information for connection 488/568
+19:52:48.289 INFO  - writing turn information for connection 489/568
+19:52:48.289 INFO  - writing turn information for connection 490/568
+19:52:48.289 INFO  - writing turn information for connection 491/568
+19:52:48.289 INFO  - writing turn information for connection 492/568
+19:52:48.289 INFO  - writing turn information for connection 493/568
+19:52:48.289 INFO  - writing turn information for connection 494/568
+19:52:48.289 INFO  - writing turn information for connection 495/568
+19:52:48.289 INFO  - writing turn information for connection 496/568
+19:52:48.289 INFO  - writing turn information for connection 497/568
+19:52:48.289 INFO  - writing turn information for connection 498/568
+19:52:48.289 INFO  - writing turn information for connection 499/568
+19:52:48.289 INFO  - writing turn information for connection 500/568
+19:52:48.289 INFO  - writing turn information for connection 501/568
+19:52:48.289 INFO  - writing turn information for connection 502/568
+19:52:48.289 INFO  - writing turn information for connection 503/568
+19:52:48.289 INFO  - writing turn information for connection 504/568
+19:52:48.289 INFO  - writing turn information for connection 505/568
+19:52:48.289 INFO  - writing turn information for connection 506/568
+19:52:48.289 INFO  - writing turn information for connection 507/568
+19:52:48.289 INFO  - writing turn information for connection 508/568
+19:52:48.289 INFO  - writing turn information for connection 509/568
+19:52:48.289 INFO  - writing turn information for connection 510/568
+19:52:48.289 INFO  - writing turn information for connection 511/568
+19:52:48.289 INFO  - writing turn information for connection 512/568
+19:52:48.289 INFO  - writing turn information for connection 513/568
+19:52:48.289 INFO  - writing turn information for connection 514/568
+19:52:48.289 INFO  - writing turn information for connection 515/568
+19:52:48.289 INFO  - writing turn information for connection 516/568
+19:52:48.290 INFO  - writing turn information for connection 517/568
+19:52:48.290 INFO  - writing turn information for connection 518/568
+19:52:48.290 INFO  - writing turn information for connection 519/568
+19:52:48.290 INFO  - writing turn information for connection 520/568
+19:52:48.290 INFO  - writing turn information for connection 521/568
+19:52:48.290 INFO  - writing turn information for connection 522/568
+19:52:48.290 INFO  - writing turn information for connection 523/568
+19:52:48.290 INFO  - writing turn information for connection 524/568
+19:52:48.290 INFO  - writing turn information for connection 525/568
+19:52:48.290 INFO  - writing turn information for connection 526/568
+19:52:48.290 INFO  - writing turn information for connection 527/568
+19:52:48.290 INFO  - writing turn information for connection 528/568
+19:52:48.290 INFO  - writing turn information for connection 529/568
+19:52:48.290 INFO  - writing turn information for connection 530/568
+19:52:48.290 INFO  - writing turn information for connection 531/568
+19:52:48.290 INFO  - writing turn information for connection 532/568
+19:52:48.290 INFO  - writing turn information for connection 533/568
+19:52:48.290 INFO  - writing turn information for connection 534/568
+19:52:48.290 INFO  - writing turn information for connection 535/568
+19:52:48.290 INFO  - writing turn information for connection 536/568
+19:52:48.290 INFO  - writing turn information for connection 537/568
+19:52:48.290 INFO  - writing turn information for connection 538/568
+19:52:48.290 INFO  - writing turn information for connection 539/568
+19:52:48.290 INFO  - writing turn information for connection 540/568
+19:52:48.290 INFO  - writing turn information for connection 541/568
+19:52:48.290 INFO  - writing turn information for connection 542/568
+19:52:48.290 INFO  - writing turn information for connection 543/568
+19:52:48.290 INFO  - writing turn information for connection 544/568
+19:52:48.290 INFO  - writing turn information for connection 545/568
+19:52:48.290 INFO  - writing turn information for connection 546/568
+19:52:48.290 INFO  - writing turn information for connection 547/568
+19:52:48.290 INFO  - writing turn information for connection 548/568
+19:52:48.290 INFO  - writing turn information for connection 549/568
+19:52:48.290 INFO  - writing turn information for connection 550/568
+19:52:48.290 INFO  - writing turn information for connection 551/568
+19:52:48.290 INFO  - writing turn information for connection 552/568
+19:52:48.291 INFO  - writing turn information for connection 553/568
+19:52:48.291 INFO  - writing turn information for connection 554/568
+19:52:48.291 INFO  - writing turn information for connection 555/568
+19:52:48.291 INFO  - writing turn information for connection 556/568
+19:52:48.291 INFO  - writing turn information for connection 557/568
+19:52:48.291 INFO  - writing turn information for connection 558/568
+19:52:48.291 INFO  - writing turn information for connection 559/568
+19:52:48.291 INFO  - writing turn information for connection 560/568
+19:52:48.291 INFO  - writing turn information for connection 561/568
+19:52:48.291 INFO  - writing turn information for connection 562/568
+19:52:48.291 INFO  - writing turn information for connection 563/568
+19:52:48.291 INFO  - writing turn information for connection 564/568
+19:52:48.291 INFO  - writing turn information for connection 565/568
+19:52:48.291 INFO  - writing turn information for connection 566/568
+19:52:48.291 INFO  - writing turn information for connection 567/568
+19:52:48.291 INFO  - writing turn information for connection 568/568
+19:52:48.291 INFO  - -> successfully written 1128 connections
+19:52:48.337 INFO  - executing netconvert...
+19:52:48.557 INFO  - netconvert log:
+19:52:48.557 INFO  - 	Success.
+19:52:48.557 INFO  - end of netconvert-log
+19:52:48.557 INFO  - netconvert errors:
+19:52:48.557 INFO  - 	Warning: Speed of straight connection '4400423_21487142_251150123_1->4400423_251150123_667945033_1' reduced by 6.09 due to turning radius of 11.05 (length=1.00, angle=20.59).
+19:52:48.557 INFO  - end of netconvert-errors
+19:52:48.558 INFO  - writing configuration information to: ernstreuter.sumocfg
+19:52:48.558 INFO  - exporting routes...
+19:52:48.558 INFO  - no routes found, creating new routes.
+19:52:48.558 INFO  - writing routes information to: ernstreuter.rou.xml
+19:52:48.558 INFO  - Generating cell_config.json
+19:52:48.613 INFO  - Generating regions.json
+19:52:48.616 INFO  - Generating network.json
+19:52:48.640 INFO  - Generating environment_config.json.
+19:52:48.642 INFO  - Generating mapping_config.json.
+19:52:48.657 INFO  - Generating ns3_config.json
+19:52:48.659 INFO  - Generating ns3_federate_config.xml
+19:52:48.668 INFO  - Generating omnetpp_config.json
+19:52:48.672 INFO  - Generating omnetpp.ini
+19:52:48.706 INFO  - Generating sns_config.json
+19:52:48.732 INFO  - Generating output_config.xml
+19:52:48.733 INFO  - Generating scenario_config.json
+19:52:48.751 INFO  - Copying original OSM
+19:52:48.757 INFO  - Generating phabmacs_config.json
+19:52:48.771 INFO  - Cleaning up work-directory
+19:52:48.772 INFO  - finished
