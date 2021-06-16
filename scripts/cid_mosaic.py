@@ -9,6 +9,8 @@ import numpy as np
 import pandas as pd
 import glom
 
+from typing import Any
+
 
 class cid_mosaic:
     """Initialize the path to MOSAIC and simulation name
@@ -227,6 +229,23 @@ class cid_mosaic:
             json.dump(self.current_fed_setting, f, indent=4)
         pass
 
+    def get_federate_value(self, tree: str) -> Any:
+        """Gets the selected federate value in the tree
+
+        Parameters
+        ----------
+        tree : str
+            dict tree to navigate to the federate value to be changed, i.e.
+            'globalNetwork.uplink.delay.delay'
+
+        Returns
+        -------
+        Any
+            federate value
+        """
+
+        return glom.glom(self.current_fed_setting, tree)
+
     @property
     def pprint_curr_fed(self):
         """Pretty print current federate configuration
@@ -308,3 +327,9 @@ class cid_mosaic:
             value to set
         """
         self._sim_name = value
+
+
+class cid_plot:
+    
+    def __init__(self) -> None:
+        pass
