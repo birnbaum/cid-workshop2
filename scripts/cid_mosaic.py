@@ -33,9 +33,11 @@ class cid_mosaic:
 
         self.is_unix = is_unix
 
+        self._cd_mosaic()
+
     def _cd_mosaic(self):
-        self.cwd = os.getcwd()
         os.chdir(self._path_to_m)
+        self.cwd = os.getcwd()
 
     def _std_pipe(self, command):
         sys.stdout.buffer.write(command.stdout)
@@ -46,7 +48,6 @@ class cid_mosaic:
         """Run the selected simulation and record logs
         """
         extension = '.sh' if self.is_unix is True else '.bat'
-        self._cd_mosaic()
         if jupyter is False:
             command = subprocess.run(['./mosaic' + extension,
                                       ' -s',
