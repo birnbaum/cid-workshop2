@@ -55,7 +55,7 @@ class cid_mosaic:
             self._std_pipe(command)
             return 0
         else:
-            cmd = self._path_to_m + './mosaic' + extension + ' -s' \
+            cmd = './mosaic' + extension + ' -s' \
                 + self.sim_name + ' -v'
             return cmd
 
@@ -70,7 +70,7 @@ class cid_mosaic:
             index of the log, 0 is the most recent result from
             the simulation, 1 is the second most recent, by default 0
         """
-        log_path = self._path_to_m + 'logs/'
+        log_path = './logs/'
         dirs = sorted([f.name for f in os.scandir(log_path) if f.is_dir()],
                       reverse=True)
         self.sim_select = log_path + dirs[idx]
@@ -139,7 +139,7 @@ class cid_mosaic:
 
     def _get_output_config(self):
 
-        xml_path = self._path_to_m + 'scenarios/' + self.sim_name \
+        xml_path = './scenarios/' + self.sim_name \
             + '/output/output_config.xml'
 
         tree = ET.parse(xml_path)
@@ -180,7 +180,7 @@ class cid_mosaic:
         """
 
         if federate == 'scenario':
-            path_to_fedjson = self._path_to_m + 'scenarios/' + self._sim_name \
+            path_to_fedjson = './scenarios/' + self._sim_name \
                 + '/scenario_config.json'
             self.fed_path = path_to_fedjson
             foo = open(path_to_fedjson)
@@ -189,7 +189,7 @@ class cid_mosaic:
             return path_to_fedjson
 
         else:
-            path_to_json = self._path_to_m + 'scenarios/' + self._sim_name \
+            path_to_json = './scenarios/' + self._sim_name \
                 + '/' + federate
 
             json_files = sorted([pos_json for pos_json
@@ -257,7 +257,7 @@ class cid_mosaic:
     def get_federates(self):
         """Print available federate configurations
         """
-        path_to_settings = self._path_to_m + 'scenarios/' + self._sim_name
+        path_to_settings = './scenarios/' + self._sim_name
         print('Available federates: {}'.format(sorted(
             [f.name for f in os.scandir(path_to_settings)])))
 
