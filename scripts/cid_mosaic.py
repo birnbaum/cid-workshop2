@@ -71,10 +71,10 @@ class cid_mosaic:
             index of the log, 0 is the most recent result from
             the simulation, 1 is the second most recent, by default 0
         """
-        log_path = './logs/'
+        log_path = os.path.join('.', 'logs')
         dirs = sorted([f.name for f in os.scandir(log_path) if f.is_dir()],
                       reverse=True)
-        self.sim_select = log_path + dirs[idx]
+        self.sim_select = os.path.join(log_path, dirs[idx])
 
         output_root = self._get_output_config()
 
@@ -133,15 +133,18 @@ class cid_mosaic:
         pd.DataFrame
             DataFrame of output.csv
         """
-        return pd.read_csv(self.sim_select + '/output.csv',
+        return pd.read_csv(os.path.join(self.sim_select + '/output.csv'),
                            sep=';',
                            header=None,
                            names=col_names)
 
     def _get_output_config(self):
 
-        xml_path = './scenarios/' + self.sim_name \
-            + '/output/output_config.xml'
+        xml_path = os.path.join('.',
+                                'scenarios',
+                                self._sim_name,
+                                'output',
+                                'output_config.xml')
 
         tree = ET.parse(xml_path)
         return tree.getroot()
@@ -181,8 +184,10 @@ class cid_mosaic:
         """
 
         if federate == 'scenario':
-            path_to_fedjson = './scenarios/' + self._sim_name \
-                + '/scenario_config.json'
+            path_to_fedjson = os.path.join('.',
+                                           'scenarios',
+                                           self._sim_name,
+                                           'scenario_config.json')
             self.fed_path = path_to_fedjson
             foo = open(path_to_fedjson)
             self.fed_name = 'scenario_config.json'
@@ -190,8 +195,10 @@ class cid_mosaic:
             return path_to_fedjson
 
         else:
-            path_to_json = './scenarios/' + self._sim_name \
-                + '/' + federate
+            path_to_json = os.path.join('.',
+                                        'scenarios',
+                                        self._sim_name,
+                                        federate)
 
             json_files = sorted([pos_json for pos_json
                                  in os.listdir(path_to_json)
@@ -202,7 +209,7 @@ class cid_mosaic:
                 return json_files
             else:
                 assert isinstance(idx, int)
-                path_to_fedjson = path_to_json + '/' + json_files[idx]
+                path_to_fedjson = os.path.join(path_to_json, json_files[idx])
                 self.fed_path = path_to_fedjson
                 foo = open(path_to_fedjson)
                 self.fed_name = json_files[idx]
@@ -258,7 +265,9 @@ class cid_mosaic:
     def get_federates(self):
         """Print available federate configurations
         """
-        path_to_settings = './scenarios/' + self._sim_name
+        path_to_settings = os.path.join('.',
+                                        'scenarios',
+                                        self._sim_name)
         print('Available federates: {}'.format(sorted(
             [f.name for f in os.scandir(path_to_settings)])))
 
