@@ -11,15 +11,27 @@
     </parent>
 
     <groupId>org.eclipse.mosaic.app</groupId>
-    <artifactId>weather-warning</artifactId>
+    <artifactId>weather-warning-cid</artifactId>
     <packaging>jar</packaging>
 
-    <name>Weather Warning Application for Barnim Tutorial</name>
+    <name>Weather Warning CID Application for Barnim Tutorial</name>
     <description>Simple application that reacts on environment events.</description>
 
     <properties>
         <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
+<?ignore
+    <repositories> 
+        <repository>
+            <id>repo.eclipse.org</id>
+            <name>MOSAIC Repository</name>
+            <url>https://repo.eclipse.org/content/repositories/mosaic</url>
+        </repository>
+    </repositories>
+    ?>
 
     <dependencies>
         <dependency>
