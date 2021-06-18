@@ -1,1 +1,9 @@
 .vscode
+!*/mosaic_dev/app/tutorials/weather-warning-cid/*
+
+mosaic_dev/*
+!mosaic_dev/app
+mosaic_dev/app/*
+!mosaic_dev/app/tutorials
+mosaic_dev/app/tutorials/*
+!mosaic_dev/app/tutorials/weather-warning-cid/
