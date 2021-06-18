@@ -4,12 +4,47 @@ import os
 import re
 import xml.etree.ElementTree as ET
 import json
+from optparse import OptionParser
+from xml.sax.handler import ContentHandler
 
 import numpy as np
 import pandas as pd
 import glom
+import matplotlib.pyplot as plt
+import pyproj
+from matplotlib.collections import LineCollection
 
 from typing import Any
+
+
+try:
+    tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
+    sys.path.append(tools)
+    import sumolib
+    from sumolib.visualization import helpers
+except ImportError:
+    sys.exit("please declare environment variable 'SUMO_HOME'")
+
+
+class WeightsReader(ContentHandler):
+
+    """Reads the dump file"""
+
+    def __init__(self, value):
+        self._edge2value = {}
+        self._value = value
+        self._intervals = []
+
+    def startElement(self, name, attrs):
+        if name == 'interval':
+            self._time = float(attrs['begin'])
+            self._edge2value[self._time] = {}
+            self._intervals.append(self._time)
+
+        elif name == 'edge':
+            id = attrs['id']
+            if self._value in attrs:
+                self._edge2value[self._time][id] = float(attrs[self._value])
 
 
 class cid_mosaic:
@@ -338,8 +373,29 @@ class cid_mosaic:
         """
         self._sim_name = value
 
+    def get_netplot(self, args=None) -> None:
+        path_net = os.path.join(self._path_to_m,
+                                'scenarios',
+                                'Barnim',
+                                'sumo',
+                                'Barnim.net.xml')
 
-class cid_plot:
-    
-    def __init__(self) -> None:
-        pass
+        net = sumolib.net.readNet(path_net)
+        net._location['projParameter']
+
+        fig, ax = plt.subplots()
+        shapes = [elem.getShape() for elem in net._edges]
+
+        shapes_geo = []
+
+        for shape in shapes:
+            foo = [(net.convertXY2LonLat(*el)) for el in shape]
+
+        
+        line_segments = LineCollection(shapes)
+        ax.add_collection(line_segments)
+        ax.set_xmargin(0.1)
+        ax.set_ymargin(0.1)
+        ax.autoscale_view(True, True, True)
+        ax.set_ylim([2700, 8300])
+        ax.set_xlim([3900, 7900])

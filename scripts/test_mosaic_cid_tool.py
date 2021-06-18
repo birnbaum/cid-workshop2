@@ -46,7 +46,6 @@ def main():
     plt.legend()
 
     plt.show()
-    """
 
     # print(mosaic.get_settings)
     mosaic.get_federates
@@ -55,6 +54,9 @@ def main():
 
     mosaic.set_federate_value('globalNetwork.uplink.delay.delay',
                               '100 ms')
+    """
+
+    mosaic.get_netplot()
 
     pass
 
