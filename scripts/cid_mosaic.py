@@ -2,10 +2,8 @@ import subprocess
 import sys
 import os
 import re
-import xml.etree.ElementTree as ET
 import json
-from optparse import OptionParser
-from xml.sax.handler import ContentHandler
+from lxml import etree
 
 import numpy as np
 import pandas as pd
@@ -21,30 +19,8 @@ try:
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
     sys.path.append(tools)
     import sumolib
-    from sumolib.visualization import helpers
 except ImportError:
     sys.exit("please declare environment variable 'SUMO_HOME'")
-
-
-class WeightsReader(ContentHandler):
-
-    """Reads the dump file"""
-
-    def __init__(self, value):
-        self._edge2value = {}
-        self._value = value
-        self._intervals = []
-
-    def startElement(self, name, attrs):
-        if name == 'interval':
-            self._time = float(attrs['begin'])
-            self._edge2value[self._time] = {}
-            self._intervals.append(self._time)
-
-        elif name == 'edge':
-            id = attrs['id']
-            if self._value in attrs:
-                self._edge2value[self._time][id] = float(attrs[self._value])
 
 
 class cid_mosaic:
@@ -113,14 +89,15 @@ class cid_mosaic:
 
         output_root = self._get_output_config()
 
-        # Create column names
-        self.df_col_names = [re.sub(r"Updated:", '', i.text)
-                             for i in output_root[0][3][0][0]]
-        self.df_col_names = [re.sub(r"\.", '', i) for i in self.df_col_names]
-        self.df_col_names[0] = 'Event'
-        self.output_df = self._get_output_csv(self.df_col_names)
+        id2fields = dict()
+        for elem in output_root[0][3]:
+            k = elem.attrib['id']
+            v = [re.sub(r"Updated:", '', i.text) for i in elem[0]]
+            v = [re.sub(r"\.", '', i) for i in v]
+            v[0] = 'Event'
+            id2fields[k] = v
 
-        return self.output_df
+        self.id2fields = id2fields
 
     def filter_df(self,
                   eventname: str,
@@ -143,19 +120,44 @@ class cid_mosaic:
         pd.DataFrame
             Filtered DataFrame
         """
+        col_names = self.id2fields[eventname]
 
-        is_eventname = self.output_df.Event == eventname
-        is_app_name = self.output_df.Name == app_name
+        reg_eventname = re.sub(r'(?=[A-Z])', '_', eventname)
+        reg_eventname = reg_eventname.replace('_', '', 1)
+        eventname = reg_eventname.upper()
+
+        output_df = self._get_output_csv(col_names)
+
+        is_eventname = output_df.Event == eventname
+        
+        app_names = ['Name', 'MappingName', 'ReceiverName', 'SourceName']
+        try:
+            is_app_name = output_df.Name == app_name
+            app_name = 'Name'
+        except AttributeError:
+            try:
+                is_app_name = output_df.MappingName == app_name
+                app_name = 'MappingName'
+            except AttributeError:
+                try:
+                    is_app_name = output_df.ReceiverName == app_name
+                    app_name = 'ReceiverName'
+                except AttributeError:
+                    try:
+                        is_app_name = output_df.MappingName == app_name
+                        app_name = 'SourceName'
+        finally:
+            pass
 
         if args[0] != 'all':
-            list_diff = list(set(self.df_col_names)
+            list_diff = list(set(col_names)
                              - set(args)
-                             - set(['Event', 'Time', 'Name']))
+                             - set(['Event', 'Time', app_name]))
 
-            filtered_df = self.output_df[is_eventname
-                                         & is_app_name].drop(list_diff, axis=1)
+            filtered_df = output_df[is_eventname
+                                    & is_app_name].drop(list_diff, axis=1)
         else:
-            filtered_df = self.output_df[is_eventname & is_app_name]
+            filtered_df = output_df[is_eventname & is_app_name]
 
         return filtered_df
 
@@ -181,7 +183,7 @@ class cid_mosaic:
                                 'output',
                                 'output_config.xml')
 
-        tree = ET.parse(xml_path)
+        tree = etree.parse(xml_path)
         return tree.getroot()
 
     def df2np(self, df: pd.DataFrame) -> np.array:
@@ -315,7 +317,8 @@ class cid_mosaic:
         list
             DataFrame Applications
         """
-        return sorted(list(set(self.output_df.Name)))
+        app_dir = os.path.join(self.sim_select, 'apps')
+        return sorted([f.name for f in os.scandir(app_dir) if f.is_dir()], reverse=True)
 
     @property
     def get_df_events(self) -> list:
@@ -327,18 +330,22 @@ class cid_mosaic:
             DataFrame Events
         """
 
-        return sorted(list(set(self.output_df.Event)))
+        return list(self.id2fields.keys())
 
-    @property
-    def get_df_labels(self) -> list:
+    def get_df_labels(self, event: str) -> list:
         """Getter DataFrame Fields
+
+        Parameters
+        ----------
+        event : str
+            Event type
 
         Returns
         -------
         list
             DataFrame Fields
         """
-        return sorted(self.df_col_names)
+        return self.id2fields[event]
 
     @property
     def get_output_df(self) -> pd.DataFrame:
@@ -406,3 +413,5 @@ class cid_mosaic:
         ax.set_ylim([52.60, 52.66])
         ax.set_xlim([13.51, 13.60])
 
+        # Add RSUs
+        rsu_0 = 0

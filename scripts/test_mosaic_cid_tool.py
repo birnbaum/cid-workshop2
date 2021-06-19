@@ -56,7 +56,21 @@ def main():
                               '100 ms')
     """
 
-    mosaic.get_netplot()
+    veh0 = mosaic.filter_df('VehicleUpdates', 'veh_0', 'all')
+    test_df = mosaic.filter_df('RsuRegistration', 'rsu_0', 'all')
+
+    mosaic.plotter()
+
+    ax = plt.gca()
+    fig = plt.gcf()
+
+    ax.plot(np.asfarray(veh0.PositionLatitude),
+            np.asfarray(veh0.PositionLongitude),
+            linewidths=0.5,
+            label='veh0')
+
+    plt.show()
+
 
     pass
 
