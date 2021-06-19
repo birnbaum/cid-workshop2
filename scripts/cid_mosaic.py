@@ -373,15 +373,20 @@ class cid_mosaic:
         """
         self._sim_name = value
 
-    def get_netplot(self, args=None) -> None:
-        path_net = os.path.join(self._path_to_m,
+    def plotter(self) -> None:
+        path_net = os.path.join('.',
                                 'scenarios',
                                 'Barnim',
                                 'sumo',
                                 'Barnim.net.xml')
 
         net = sumolib.net.readNet(path_net)
-        net._location['projParameter']
+        x_off, y_off = net.getLocationOffset()
+
+        p = pyproj.Proj(proj='utm',
+                        zone=33,
+                        ellps='WGS84',
+                        preserve_units=False)
 
         fig, ax = plt.subplots()
         shapes = [elem.getShape() for elem in net._edges]
@@ -389,13 +394,15 @@ class cid_mosaic:
         shapes_geo = []
 
         for shape in shapes:
-            foo = [(net.convertXY2LonLat(*el)) for el in shape]
+            foo = [(p(el[0] - x_off, el[1] - y_off,
+                      inverse=True)) for el in shape]
+            shapes_geo.append(foo)
 
-        
-        line_segments = LineCollection(shapes)
+        line_segments = LineCollection(shapes_geo)
         ax.add_collection(line_segments)
         ax.set_xmargin(0.1)
         ax.set_ymargin(0.1)
         ax.autoscale_view(True, True, True)
-        ax.set_ylim([2700, 8300])
-        ax.set_xlim([3900, 7900])
+        ax.set_ylim([52.60, 52.66])
+        ax.set_xlim([13.51, 13.60])
+
