@@ -4,13 +4,14 @@ import os
 import re
 import json
 from lxml import etree
+import mpl_scatter_density
 
 import numpy as np
 import pandas as pd
 import glom
 import matplotlib.pyplot as plt
 import pyproj
-from matplotlib.collections import LineCollection
+from matplotlib.collections import EventCollection, LineCollection
 
 from typing import Any
 
@@ -91,7 +92,7 @@ class cid_mosaic:
 
         id2fields = dict()
         for elem in output_root[0][3]:
-            k = elem.attrib['id']
+            k = elem[0][0].text.replace('"', '')
             v = [re.sub(r"Updated:", '', i.text) for i in elem[0]]
             v = [re.sub(r"\.", '', i) for i in v]
             v[0] = 'Event'
@@ -99,48 +100,48 @@ class cid_mosaic:
 
         self.id2fields = id2fields
 
-    def filter_df(self,
-                  eventname: str,
-                  app_field: str,
-                  app_name: str,
-                  *args: str) -> pd.DataFrame:
+    def filter_df(self, **kwargs) -> pd.DataFrame:
         """Filter DataFrame using the event name, application name and
         fields
 
         Parameters
         ----------
-        eventname : str
-            Desired event name
-        app_name : str
-            Desired application name
-        *args : str
-            Fields to include in the filtered DataFrame
+        **kwargs : field=value
+            Filter by field-value pair
 
         Returns
         -------
         pd.DataFrame
             Filtered DataFrame
         """
-        col_names = self.id2fields[eventname]
 
-        reg_eventname = re.sub(r'(?=[A-Z])', '_', eventname)
-        reg_eventname = reg_eventname.replace('_', '', 1)
-        eventname = reg_eventname.upper()
+        assert 'Event' in kwargs, 'Must specify an event name'
+        assert 'select' in kwargs, 'Either "all" or list of str'
+        if kwargs['select'] == 'all':
+            selected = 'all'
+        else:
+            assert isinstance(kwargs['select'], list)
+            selected = kwargs['select']
 
+        col_names = self.id2fields[kwargs['Event']]
         output_df = self._get_output_csv(col_names)
 
-        is_eventname = output_df.Event == eventname
-        is_app_name = output_df.Name == app_name
+        # Cleanup
+        del kwargs['select']
 
-        if args[0] != 'all':
+        # Boolean filters
+        for k, v in kwargs.items():
+            is_df_bool = output_df[k] == v
+            output_df = output_df[is_df_bool]
+
+        if selected != 'all':
             list_diff = list(set(col_names)
-                             - set(args)
-                             - set(['Event', 'Time', app_name]))
+                             - set(['Event', 'Time'])
+                             - set(selected))
 
-            filtered_df = output_df[is_eventname
-                                    & is_app_name].drop(list_diff, axis=1)
+            filtered_df = output_df.drop(list_diff, axis=1)
         else:
-            filtered_df = output_df[is_eventname & is_app_name]
+            filtered_df = output_df
 
         return filtered_df
 
@@ -378,7 +379,8 @@ class cid_mosaic:
                         ellps='WGS84',
                         preserve_units=False)
 
-        fig, ax = plt.subplots()
+        fig = plt.figure()
+        ax = fig.add_subplot(1, 1, 1, projection='scatter_density')
         shapes = [elem.getShape() for elem in net._edges]
 
         shapes_geo = []
@@ -390,11 +392,33 @@ class cid_mosaic:
 
         line_segments = LineCollection(shapes_geo)
         ax.add_collection(line_segments)
-        ax.set_xmargin(0.1)
-        ax.set_ymargin(0.1)
+        # ax.set_xmargin(0.1)
+        # ax.set_ymargin(0.1)
         ax.autoscale_view(True, True, True)
-        ax.set_ylim([52.60, 52.66])
-        ax.set_xlim([13.51, 13.60])
+        ax.set_ylim([52.60, 52.653])
+        ax.set_xlim([13.51, 13.57])
 
         # Add RSUs
-        rsu_0 = 0
+        rsu_0 = self.filter_df(Event='RSU_REGISTRATION',
+                               MappingName='rsu_0',
+                               select='all')
+
+        all_veh = sorted(self.get_df_apps)
+        all_veh.remove('rsu_0')
+
+        for veh in all_veh:
+
+            df = self.filter_df(Event='VEHICLE_UPDATES',
+                                Name=veh,
+                                select=['PositionLongitude',
+                                        'PositionLatitude'])
+
+            ax.plot(df.PositionLongitude.astype(float),
+                    df.PositionLatitude.astype(float),
+                    linewidth=1)
+
+        ax.scatter(rsu_0.MappingPositionLongitude.astype(float),
+                   rsu_0.MappingPositionLatitude.astype(float),
+                   linewidths=20, c='r', marker="1")
+
+        plt.show()

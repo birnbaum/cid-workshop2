@@ -56,21 +56,20 @@ def main():
                               '100 ms')
     """
 
-    veh0 = mosaic.filter_df('VehicleUpdates', 'veh_0', 'all')
-    test_df = mosaic.filter_df('RsuRegistration', 'rsu_0', 'all')
+    # veh0 = mosaic.filter_df('VEHICLE_UPDATES', 'veh_0', 'all')
+    # test_df = mosaic.filter_df('RsuRegistration', 'rsu_0', 'all')
+    
+    """
+
+    veh0 = mosaic.filter_df(Event='VEHICLE_UPDATES', Name='veh_0', select='all')
+
+    rsu0 = mosaic.filter_df(Event='RSU_REGISTRATION',
+                            MappingName='rsu_0',
+                            select=['MappingPositionLatitude',
+                                    'MappingPositionLongitude'])
+    """
 
     mosaic.plotter()
-
-    ax = plt.gca()
-    fig = plt.gcf()
-
-    ax.plot(np.asfarray(veh0.PositionLatitude),
-            np.asfarray(veh0.PositionLongitude),
-            linewidths=0.5,
-            label='veh0')
-
-    plt.show()
-
 
     pass
 
