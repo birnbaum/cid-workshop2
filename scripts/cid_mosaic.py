@@ -101,6 +101,7 @@ class cid_mosaic:
 
     def filter_df(self,
                   eventname: str,
+                  app_field: str,
                   app_name: str,
                   *args: str) -> pd.DataFrame:
         """Filter DataFrame using the event name, application name and
@@ -129,25 +130,7 @@ class cid_mosaic:
         output_df = self._get_output_csv(col_names)
 
         is_eventname = output_df.Event == eventname
-        
-        app_names = ['Name', 'MappingName', 'ReceiverName', 'SourceName']
-        try:
-            is_app_name = output_df.Name == app_name
-            app_name = 'Name'
-        except AttributeError:
-            try:
-                is_app_name = output_df.MappingName == app_name
-                app_name = 'MappingName'
-            except AttributeError:
-                try:
-                    is_app_name = output_df.ReceiverName == app_name
-                    app_name = 'ReceiverName'
-                except AttributeError:
-                    try:
-                        is_app_name = output_df.MappingName == app_name
-                        app_name = 'SourceName'
-        finally:
-            pass
+        is_app_name = output_df.Name == app_name
 
         if args[0] != 'all':
             list_diff = list(set(col_names)
