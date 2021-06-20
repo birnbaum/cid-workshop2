@@ -2,14 +2,26 @@ import subprocess
 import sys
 import os
 import re
-import xml.etree.ElementTree as ET
 import json
+from lxml import etree
+import mpl_scatter_density
 
 import numpy as np
 import pandas as pd
 import glom
+import matplotlib.pyplot as plt
+import pyproj
+from matplotlib.collections import EventCollection, LineCollection
 
 from typing import Any
+
+
+try:
+    tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
+    sys.path.append(tools)
+    import sumolib
+except ImportError:
+    sys.exit("please declare environment variable 'SUMO_HOME'")
 
 
 class cid_mosaic:
@@ -78,30 +90,24 @@ class cid_mosaic:
 
         output_root = self._get_output_config()
 
-        # Create column names
-        self.df_col_names = [re.sub(r"Updated:", '', i.text)
-                             for i in output_root[0][3][0][0]]
-        self.df_col_names = [re.sub(r"\.", '', i) for i in self.df_col_names]
-        self.df_col_names[0] = 'Event'
-        self.output_df = self._get_output_csv(self.df_col_names)
+        id2fields = dict()
+        for elem in output_root[0][3]:
+            k = elem[0][0].text.replace('"', '')
+            v = [re.sub(r"Updated:", '', i.text) for i in elem[0]]
+            v = [re.sub(r"\.", '', i) for i in v]
+            v[0] = 'Event'
+            id2fields[k] = v
 
-        return self.output_df
+        self.id2fields = id2fields
 
-    def filter_df(self,
-                  eventname: str,
-                  app_name: str,
-                  *args: str) -> pd.DataFrame:
+    def filter_df(self, **kwargs) -> pd.DataFrame:
         """Filter DataFrame using the event name, application name and
         fields
 
         Parameters
         ----------
-        eventname : str
-            Desired event name
-        app_name : str
-            Desired application name
-        *args : str
-            Fields to include in the filtered DataFrame
+        **kwargs : field=value
+            Filter by field-value pair
 
         Returns
         -------
@@ -109,18 +115,33 @@ class cid_mosaic:
             Filtered DataFrame
         """
 
-        is_eventname = self.output_df.Event == eventname
-        is_app_name = self.output_df.Name == app_name
-
-        if args[0] != 'all':
-            list_diff = list(set(self.df_col_names)
-                             - set(args)
-                             - set(['Event', 'Time', 'Name']))
-
-            filtered_df = self.output_df[is_eventname
-                                         & is_app_name].drop(list_diff, axis=1)
+        assert 'Event' in kwargs, 'Must specify an event name'
+        assert 'select' in kwargs, 'Either "all" or list of str'
+        if kwargs['select'] == 'all':
+            selected = 'all'
         else:
-            filtered_df = self.output_df[is_eventname & is_app_name]
+            assert isinstance(kwargs['select'], list)
+            selected = kwargs['select']
+
+        col_names = self.id2fields[kwargs['Event']]
+        output_df = self._get_output_csv(col_names)
+
+        # Cleanup
+        del kwargs['select']
+
+        # Boolean filters
+        for k, v in kwargs.items():
+            is_df_bool = output_df[k] == v
+            output_df = output_df[is_df_bool]
+
+        if selected != 'all':
+            list_diff = list(set(col_names)
+                             - set(['Event', 'Time'])
+                             - set(selected))
+
+            filtered_df = output_df.drop(list_diff, axis=1)
+        else:
+            filtered_df = output_df
 
         return filtered_df
 
@@ -146,7 +167,7 @@ class cid_mosaic:
                                 'output',
                                 'output_config.xml')
 
-        tree = ET.parse(xml_path)
+        tree = etree.parse(xml_path)
         return tree.getroot()
 
     def df2np(self, df: pd.DataFrame) -> np.array:
@@ -280,7 +301,8 @@ class cid_mosaic:
         list
             DataFrame Applications
         """
-        return sorted(list(set(self.output_df.Name)))
+        app_dir = os.path.join(self.sim_select, 'apps')
+        return sorted([f.name for f in os.scandir(app_dir) if f.is_dir()], reverse=True)
 
     @property
     def get_df_events(self) -> list:
@@ -292,18 +314,22 @@ class cid_mosaic:
             DataFrame Events
         """
 
-        return sorted(list(set(self.output_df.Event)))
+        return list(self.id2fields.keys())
 
-    @property
-    def get_df_labels(self) -> list:
+    def get_df_labels(self, event: str) -> list:
         """Getter DataFrame Fields
+
+        Parameters
+        ----------
+        event : str
+            Event type
 
         Returns
         -------
         list
             DataFrame Fields
         """
-        return sorted(self.df_col_names)
+        return self.id2fields[event]
 
     @property
     def get_output_df(self) -> pd.DataFrame:
@@ -338,8 +364,61 @@ class cid_mosaic:
         """
         self._sim_name = value
 
+    def plotter(self) -> None:
+        path_net = os.path.join('.',
+                                'scenarios',
+                                'Barnim',
+                                'sumo',
+                                'Barnim.net.xml')
 
-class cid_plot:
-    
-    def __init__(self) -> None:
-        pass
+        net = sumolib.net.readNet(path_net)
+        x_off, y_off = net.getLocationOffset()
+
+        p = pyproj.Proj(proj='utm',
+                        zone=33,
+                        ellps='WGS84',
+                        preserve_units=False)
+
+        fig = plt.figure()
+        ax = fig.add_subplot(1, 1, 1, projection='scatter_density')
+        shapes = [elem.getShape() for elem in net._edges]
+
+        shapes_geo = []
+
+        for shape in shapes:
+            foo = [(p(el[0] - x_off, el[1] - y_off,
+                      inverse=True)) for el in shape]
+            shapes_geo.append(foo)
+
+        line_segments = LineCollection(shapes_geo)
+        ax.add_collection(line_segments)
+        # ax.set_xmargin(0.1)
+        # ax.set_ymargin(0.1)
+        ax.autoscale_view(True, True, True)
+        ax.set_ylim([52.60, 52.653])
+        ax.set_xlim([13.51, 13.57])
+
+        # Add RSUs
+        rsu_0 = self.filter_df(Event='RSU_REGISTRATION',
+                               MappingName='rsu_0',
+                               select='all')
+
+        all_veh = sorted(self.get_df_apps)
+        all_veh.remove('rsu_0')
+
+        for veh in all_veh:
+
+            df = self.filter_df(Event='VEHICLE_UPDATES',
+                                Name=veh,
+                                select=['PositionLongitude',
+                                        'PositionLatitude'])
+
+            ax.plot(df.PositionLongitude.astype(float),
+                    df.PositionLatitude.astype(float),
+                    linewidth=1)
+
+        ax.scatter(rsu_0.MappingPositionLongitude.astype(float),
+                   rsu_0.MappingPositionLatitude.astype(float),
+                   linewidths=20, c='r', marker="1")
+
+        plt.show()

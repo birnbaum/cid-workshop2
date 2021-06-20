@@ -46,7 +46,6 @@ def main():
     plt.legend()
 
     plt.show()
-    """
 
     # print(mosaic.get_settings)
     mosaic.get_federates
@@ -55,6 +54,22 @@ def main():
 
     mosaic.set_federate_value('globalNetwork.uplink.delay.delay',
                               '100 ms')
+    """
+
+    # veh0 = mosaic.filter_df('VEHICLE_UPDATES', 'veh_0', 'all')
+    # test_df = mosaic.filter_df('RsuRegistration', 'rsu_0', 'all')
+    
+    """
+
+    veh0 = mosaic.filter_df(Event='VEHICLE_UPDATES', Name='veh_0', select='all')
+
+    rsu0 = mosaic.filter_df(Event='RSU_REGISTRATION',
+                            MappingName='rsu_0',
+                            select=['MappingPositionLatitude',
+                                    'MappingPositionLongitude'])
+    """
+
+    mosaic.plotter()
 
     pass
 
