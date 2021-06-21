@@ -8,7 +8,7 @@ def main():
     sns.set()
     mosaic = cid_mosaic('/home/onqi/Documents/eclipse_mosaic/',
                         'Barnim')
-    # mosaic.run_simulation()
+    mosaic.run_simulation()
     mosaic.select_simulation_result()
     """
     print(mosaic.get_df_labels)

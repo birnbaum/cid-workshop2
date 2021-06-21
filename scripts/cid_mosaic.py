@@ -4,13 +4,14 @@ import os
 import re
 import json
 from lxml import etree
-import mpl_scatter_density
 
 import numpy as np
 import pandas as pd
 import glom
 import matplotlib.pyplot as plt
 import pyproj
+from scipy.cluster.vq import kmeans2
+from sklearn.cluster import DBSCAN
 from matplotlib.collections import EventCollection, LineCollection
 
 from typing import Any
@@ -380,7 +381,7 @@ class cid_mosaic:
                         preserve_units=False)
 
         fig = plt.figure()
-        ax = fig.add_subplot(1, 1, 1, projection='scatter_density')
+        ax = fig.add_subplot(1, 1, 1)
         shapes = [elem.getShape() for elem in net._edges]
 
         shapes_geo = []
@@ -392,8 +393,8 @@ class cid_mosaic:
 
         line_segments = LineCollection(shapes_geo)
         ax.add_collection(line_segments)
-        # ax.set_xmargin(0.1)
-        # ax.set_ymargin(0.1)
+        ax.set_xmargin(0.1)
+        ax.set_ymargin(0.1)
         ax.autoscale_view(True, True, True)
         ax.set_ylim([52.60, 52.653])
         ax.set_xlim([13.51, 13.57])
@@ -406,19 +407,49 @@ class cid_mosaic:
         all_veh = sorted(self.get_df_apps)
         all_veh.remove('rsu_0')
 
-        for veh in all_veh:
+        df = self.filter_df(Event='VEHICLE_UPDATES',
+                            select=['PositionLongitude',
+                                    'PositionLatitude'])
 
-            df = self.filter_df(Event='VEHICLE_UPDATES',
-                                Name=veh,
-                                select=['PositionLongitude',
-                                        'PositionLatitude'])
+        gps_obs = np.concatenate(
+            (np.asfarray(df.PositionLongitude).reshape(-1, 1),
+             np.asfarray(df.PositionLatitude).reshape(-1, 1)), axis=1)
 
-            ax.plot(df.PositionLongitude.astype(float),
-                    df.PositionLatitude.astype(float),
-                    linewidth=1)
+        _dens_labels = np.array([self._classify(obs) for obs in gps_obs])
 
-        ax.scatter(rsu_0.MappingPositionLongitude.astype(float),
-                   rsu_0.MappingPositionLatitude.astype(float),
-                   linewidths=20, c='r', marker="1")
+        r0 = gps_obs[_dens_labels == -1.].T
+        r1 = gps_obs[_dens_labels == 1.].T
 
+        # weights of road
+        total_pts = gps_obs.size
+        w0 = r0.size / total_pts
+        w1 = r1.size / total_pts
+
+        ax.scatter(r0[0], r0[1], c='r',
+                   linewidths=1,
+                   label='density={}'.format(w0),
+                   alpha=w0)
+        ax.scatter(r1[0], r1[1], c='b',
+                   linewidths=1,
+                   label='density={}'.format(w1),
+                   alpha=w1)
+        plt.legend(loc='upper left')
         plt.show()
+        print()
+
+    def _classify(self, gps_coord):
+
+        A = [13.5359800, 52.6128399]
+        B = [13.567001, 52.644249]
+
+        if gps_coord[0] < A[0]:
+            return 0.
+        elif gps_coord[1] > B[1]:
+            return 0.
+        else:
+            position = np.sign((B[0] - A[0])
+                               * (gps_coord[1] - A[1])
+                               - (B[1] - A[1])
+                               * (gps_coord[0] - A[0]))
+
+        return position
