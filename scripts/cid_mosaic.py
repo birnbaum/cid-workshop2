@@ -301,7 +301,8 @@ class cid_mosaic:
             DataFrame Applications
         """
         app_dir = os.path.join(self.sim_select, 'apps')
-        return sorted([f.name for f in os.scandir(app_dir) if f.is_dir()], reverse=True)
+        return sorted([f.name for f in os.scandir(app_dir) if f.is_dir()],
+                      reverse=True)
 
     @property
     def get_df_events(self) -> list:
