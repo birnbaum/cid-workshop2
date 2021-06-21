@@ -58,7 +58,7 @@ def main():
 
     # veh0 = mosaic.filter_df('VEHICLE_UPDATES', 'veh_0', 'all')
     # test_df = mosaic.filter_df('RsuRegistration', 'rsu_0', 'all')
-    
+
     """
 
     veh0 = mosaic.filter_df(Event='VEHICLE_UPDATES', Name='veh_0', select='all')
@@ -70,6 +70,7 @@ def main():
     """
 
     mosaic.plotter()
+    plt.show()
 
     pass
 

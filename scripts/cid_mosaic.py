@@ -4,14 +4,14 @@ import os
 import re
 import json
 from lxml import etree
-import mpl_scatter_density
 
 import numpy as np
 import pandas as pd
 import glom
 import matplotlib.pyplot as plt
 import pyproj
-from matplotlib.collections import EventCollection, LineCollection
+from matplotlib.collections import LineCollection
+from matplotlib.patches import Rectangle
 
 from typing import Any
 
@@ -302,7 +302,8 @@ class cid_mosaic:
             DataFrame Applications
         """
         app_dir = os.path.join(self.sim_select, 'apps')
-        return sorted([f.name for f in os.scandir(app_dir) if f.is_dir()], reverse=True)
+        return sorted([f.name for f in os.scandir(app_dir) if f.is_dir()],
+                      reverse=True)
 
     @property
     def get_df_events(self) -> list:
@@ -380,7 +381,7 @@ class cid_mosaic:
                         preserve_units=False)
 
         fig = plt.figure()
-        ax = fig.add_subplot(1, 1, 1, projection='scatter_density')
+        ax = fig.add_subplot(1, 1, 1)
         shapes = [elem.getShape() for elem in net._edges]
 
         shapes_geo = []
@@ -390,10 +391,10 @@ class cid_mosaic:
                       inverse=True)) for el in shape]
             shapes_geo.append(foo)
 
-        line_segments = LineCollection(shapes_geo)
+        line_segments = LineCollection(shapes_geo, colors='k', alpha=0.5)
         ax.add_collection(line_segments)
-        # ax.set_xmargin(0.1)
-        # ax.set_ymargin(0.1)
+        ax.set_xmargin(0.1)
+        ax.set_ymargin(0.1)
         ax.autoscale_view(True, True, True)
         ax.set_ylim([52.60, 52.653])
         ax.set_xlim([13.51, 13.57])
@@ -403,22 +404,69 @@ class cid_mosaic:
                                MappingName='rsu_0',
                                select='all')
 
-        all_veh = sorted(self.get_df_apps)
-        all_veh.remove('rsu_0')
-
-        for veh in all_veh:
-
-            df = self.filter_df(Event='VEHICLE_UPDATES',
-                                Name=veh,
-                                select=['PositionLongitude',
-                                        'PositionLatitude'])
-
-            ax.plot(df.PositionLongitude.astype(float),
-                    df.PositionLatitude.astype(float),
-                    linewidth=1)
-
         ax.scatter(rsu_0.MappingPositionLongitude.astype(float),
                    rsu_0.MappingPositionLatitude.astype(float),
-                   linewidths=20, c='r', marker="1")
+                   c='g', linewidths=20, marker="1", label='Road Side Unit')
 
-        plt.show()
+        # Get road conditions
+        self.retrieve_federate('environment', idx=0)
+        spec = ('events', ['location.area.a'])
+        envpts_a = sorted(list(self.get_federate_value(spec)[0].values()))
+        spec = ('events', ['location.area.b'])
+        envpts_b = sorted(list(self.get_federate_value(spec)[0].values()))
+
+        lon = (envpts_a[0], envpts_b[0])
+        lat = (envpts_a[1], envpts_b[1])
+
+        rect = Rectangle((min(lon), min(lat)),
+                         max(lon)-min(lon),
+                         max(lat) - min(lat),
+                         linewidth=5, edgecolor='c',
+                         facecolor='none', label='Hazardous Road')
+
+        ax.add_patch(rect)
+
+        df = self.filter_df(Event='VEHICLE_UPDATES',
+                            select=['PositionLongitude',
+                                    'PositionLatitude'])
+
+        gps_obs = np.concatenate(
+            (np.asfarray(df.PositionLongitude).reshape(-1, 1),
+             np.asfarray(df.PositionLatitude).reshape(-1, 1)), axis=1)
+
+        _dens_labels = np.array([self._classify(obs) for obs in gps_obs])
+
+        r0 = gps_obs[_dens_labels == -1.].T
+        r1 = gps_obs[_dens_labels == 1.].T
+
+        # weights of road
+        total_pts = gps_obs.size
+        w0 = r0.size / total_pts
+        w1 = r1.size / total_pts
+
+        ax.scatter(r0[0], r0[1], c='r',
+                   linewidths=1,
+                   label='Density = {}'.format(w0),
+                   alpha=w0)
+        ax.scatter(r1[0], r1[1], c='b',
+                   alpha=w1,
+                   linewidths=1,
+                   label='Density = {}'.format(w1))
+        plt.legend(loc='upper left')
+
+    def _classify(self, gps_coord):
+
+        A = [13.5359800, 52.6128399]
+        B = [13.567001, 52.644249]
+
+        if gps_coord[0] < A[0]:
+            return 0.
+        elif gps_coord[1] > B[1]:
+            return 0.
+        else:
+            position = np.sign((B[0] - A[0])
+                               * (gps_coord[1] - A[1])
+                               - (B[1] - A[1])
+                               * (gps_coord[0] - A[0]))
+
+        return position
