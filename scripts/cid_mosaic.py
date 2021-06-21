@@ -10,9 +10,7 @@ import pandas as pd
 import glom
 import matplotlib.pyplot as plt
 import pyproj
-from scipy.cluster.vq import kmeans2
-from sklearn.cluster import DBSCAN
-from matplotlib.collections import EventCollection, LineCollection
+from matplotlib.collections import LineCollection
 
 from typing import Any
 
