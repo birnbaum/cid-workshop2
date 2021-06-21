@@ -11,6 +11,7 @@ import glom
 import matplotlib.pyplot as plt
 import pyproj
 from matplotlib.collections import LineCollection
+from matplotlib.patches import Rectangle
 
 from typing import Any
 
@@ -390,7 +391,7 @@ class cid_mosaic:
                       inverse=True)) for el in shape]
             shapes_geo.append(foo)
 
-        line_segments = LineCollection(shapes_geo)
+        line_segments = LineCollection(shapes_geo, colors='k', alpha=0.5)
         ax.add_collection(line_segments)
         ax.set_xmargin(0.1)
         ax.set_ymargin(0.1)
@@ -403,8 +404,27 @@ class cid_mosaic:
                                MappingName='rsu_0',
                                select='all')
 
-        all_veh = sorted(self.get_df_apps)
-        all_veh.remove('rsu_0')
+        ax.scatter(rsu_0.MappingPositionLongitude.astype(float),
+                   rsu_0.MappingPositionLatitude.astype(float),
+                   c='g', linewidths=20, marker="1", label='Road Side Unit')
+
+        # Get road conditions
+        self.retrieve_federate('environment', idx=0)
+        spec = ('events', ['location.area.a'])
+        envpts_a = sorted(list(self.get_federate_value(spec)[0].values()))
+        spec = ('events', ['location.area.b'])
+        envpts_b = sorted(list(self.get_federate_value(spec)[0].values()))
+
+        lon = (envpts_a[0], envpts_b[0])
+        lat = (envpts_a[1], envpts_b[1])
+
+        rect = Rectangle((min(lon), min(lat)),
+                         max(lon)-min(lon),
+                         max(lat) - min(lat),
+                         linewidth=5, edgecolor='c',
+                         facecolor='none', label='Hazardous Road')
+
+        ax.add_patch(rect)
 
         df = self.filter_df(Event='VEHICLE_UPDATES',
                             select=['PositionLongitude',
@@ -426,15 +446,13 @@ class cid_mosaic:
 
         ax.scatter(r0[0], r0[1], c='r',
                    linewidths=1,
-                   label='density={}'.format(w0),
+                   label='Density = {}'.format(w0),
                    alpha=w0)
         ax.scatter(r1[0], r1[1], c='b',
+                   alpha=w1,
                    linewidths=1,
-                   label='density={}'.format(w1),
-                   alpha=w1)
+                   label='Density = {}'.format(w1))
         plt.legend(loc='upper left')
-        plt.show()
-        print()
 
     def _classify(self, gps_coord):
 
