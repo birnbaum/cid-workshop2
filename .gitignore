@@ -8,7 +8,7 @@ mosaic_dev/app/*
 mosaic_dev/app/tutorials/*
 !mosaic_dev/app/tutorials/weather-warning-cid/
 
-scripts/__pycache__
+scripts/__pycache__/
 slides/lecture
 slides/CID_Workshop-I.pptx
 slides/swd(2013)527-communication.pdf
