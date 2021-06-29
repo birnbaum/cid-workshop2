@@ -2,7 +2,7 @@
 
 You are going to need a virtual environment with Jupyter Notebook installed in order to use the toolbox. Follow these steps:
 
-**This guide assumes you have already installed Python 3 on your computer.** To check, enter `python --version`. Sometimes, if you have both Python 2 and 3 installed at the same time, you might need to check using `python3 --version`. In this case, replace `python` with `python3` for the rest of the guide.
+**This guide assumes you have already installed Python 3 on your computer.** To check, enter `python --version`. Sometimes, if you have both Python 2 and 3 installed at the same time, you might need to check using `python3 --version`, or in Linux case, `python3`. In this case, replace `python` with `python3` for the rest of the guide.
 
 ## For Windows 10 x64
 
@@ -19,3 +19,18 @@ You are going to need a virtual environment with Jupyter Notebook installed in o
 5. Type `cd ../..` to go to the root folder, i.e. where `cid_mosaic.py` is.
 
 6. Run Jupyter-Notebook using `jupyter notebook`
+
+## For Linux
+
+1. Install `python3-venv`: `sudo apt install python3-venv`
+2. Open a terminal in the folder where you have extracted this zip-file.
+3. Type `python3 -m venv cid_venv`. This will create the virtual environment.
+4. Type `source cid_venv/bin/activate`. This will activate the virtual environment.
+
+```shell
+(cid_venv) onqi@ubuntu20:~/Documents/cid-workshop2/releases/workshop_prep$
+```
+
+4.  Type `python3 -m pip install -r requirements.txt` or `python3 -m pip install numpy matplotlib seaborn glom lxml pyproj jupyterlab`
+
+5. Run Jupyter-Notebook using `jupyter notebook`
