@@ -1,4 +1,4 @@
-# MOSAIC Installation Guide
+# Installation Guide
 
 This guide describes the steps needed in order to install and configure Eclipse MOSAIC on Debian (i.e. Ubuntu) distributions, Windows, and macOS. 
 It is based on the official guide found in the [webpage](https://www.eclipse.org/mosaic/docs/getting_started/).
@@ -19,23 +19,18 @@ OpenJDK 64-Bit Server VM AdoptOpenJDK-16.0.1+9 (build 16.0.1+9, mixed mode, shar
 
 Else, if you get an error message or something similar, you need to install Java based on the [official guide](https://adoptopenjdk.net/installation.html?variant=openjdk16&jvmVariant=hotspot):
 
-#### Linux
+### Linux
 
 1. Download the latest release: [AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16.0.1%2B9/OpenJDK16U-jdk_x64_linux_hotspot_16.0.1_9.tar.gz)
 2. Create a new directory in your home-folder called **adoptopenjdk**
-   1. Use either file explorer or terminal
-3. Locate the downloaded tarball using terminal
-   1. If you are using a file explorer, you can right-click and select *"Open in Terminal"*.
-   2. Otherwise, open the terminal and change directory to the download folder.
-4. Copy-paste/move the tarball to **adoptopenjdk** and open a terminal in this folder ala Step 3.
-5. Extract the tarball using `tar xzf OpenJDK16U-jdk_x64_linux_hotspot_16.0.1_9.tar.gz` or type `tar xzf Open` and click **Tab**. The terminal should autofill the rest.
-6. The tarball should extract the following folder: **jdk-16.0.1+9**.
-7. Open a new terminal and type in the following commands: First `cd` and then `gedit .bashrc`.
-8. Insert the following line at the end: `export PATH=/home/USERNAME/adoptopenjdk/jdk-16.0.1+9/bin:$PATH`, save and exit.
-   1. You can get your USERNAME using the command `whoami` in a terminal. 
-9. Open a new terminal and type `java --version`. It should now be installed.
+3. Copy/move the tarball from your download folder to **adoptopenjdk** and open a terminal in this folder
+4. Extract the tarball using `tar xzf OpenJDK16U-jdk_x64_linux_hotspot_16.0.1_9.tar.gz`
+5. The tarball should extract the following folder: **jdk-16.0.1+9**.
+6. Open a new terminal and type in the following commands: First `cd` and then `gedit .bashrc`.
+7. Insert the following line at the end: `export PATH=/home/USERNAME/adoptopenjdk/jdk-16.0.1+9/bin:$PATH`, save and exit. You can get your USERNAME using the command `whoami` in a terminal. 
+8. Open a new terminal and type `java --version`. It should now be installed.
 
-#### Windows
+### Windows
 
 1. Download the latest LTS release: [AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.11%2B9/OpenJDK11U-jdk_x64_windows_hotspot_11.0.11_9.msi)
 2. Double click and run as administrator
@@ -45,16 +40,17 @@ Else, if you get an error message or something similar, you need to install Java
 
 After installation type `java --version` in the command line to check whether the installation was successful.
 
-#### macOS
+### macOS
 
 1. Download the latest release: [AdoptOpenJDK](https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16.0.1%2B9/OpenJDK16U-jdk_x64_mac_hotspot_16.0.1_9.pkg)
 2. Install the `.pkg` file just like any other application
 3. Open a new terminal and type `java --version`. It should now be installed.
 
+<div style="page-break-after: always;"></div>
 
 ## Installing SUMO
 
-#### Linux
+### Linux
 
 In the terminal, type in the following commands:
 
@@ -64,32 +60,32 @@ sudo apt-get update
 sudo apt-get install sumo sumo-tools sumo-doc
 ```
 
-After installation, check using `sumo --version`.
+Open a new terminal and run `sumo --version` to check if everything works.
 
-#### Windows
+### Windows
 
-Download https://sumo.dlr.de/releases/1.9.2/sumo-win64-1.9.2.msi and install as usual.
+Download [SUMO](https://sumo.dlr.de/releases/1.9.2/sumo-win64-1.9.2.msi) and install as usual.
 
 **IMPORTANT:** Don't forget to set environment variable **SUMO_HOME**:
-
 ![Environment variable SUMO_HOME](fig/sumo_ins.png)
 
-After installation, check using `sumo --version`.
+Open a new terminal and run `sumo --version` to check if everything works.
 
-#### macOS
+### macOS
 
-Installation on macOS is a litle harder as there are now pre-compiled binaries available.
-However, the installation is well documented: Follow "The Homebrew Approach" in the [official guide](https://sumo.dlr.de/docs/Installing/MacOS_Build.html). Skip all the optional steps.
+For macOS simply follow the [official guide](https://sumo.dlr.de/docs/Installing/index.html#macos).
 
-After installation, check using `sumo --version`.
+Open a new terminal and run `sumo --version` to check if everything works.
 
+
+<div style="page-break-after: always;"></div>
 
 ## Installing Eclipse MOSAIC
 
-1. Download (Eclipse MOSAIC 21)[https://www.dcaiti.tu-berlin.de/research/simulation/download/]
+1. Download [Eclipse MOSAIC 21](https://www.dcaiti.tu-berlin.de/research/simulation/download/)
 2. Extract it and open a terminal in the resulting folder (on Windows you can simply write "cmd" in the address bar to open the terminal)
-3. On Linux and macOS: Type `chmod +x mosaic.sh`. This will make the shell script executable.
-4. Type `./mosaic.sh -s Barnim -v` on Linux and macOS or `./mosaic.bar -s Barnim -v` on Windows. This should run the Barnim simulation and open the web visualizer.
+3. On Linux and macOS: Type `chmod +x ./mosaic.sh`. This will make the shell script executable.
+4. Type `./mosaic.sh -s Barnim -v` on Linux and macOS or `./mosaic.bat -s Barnim -v` on Windows. This should run the Barnim simulation and open the web visualizer.
 5. In the terminal window you should see an output similar to this:
 
 ```shell
@@ -104,16 +100,44 @@ After installation, check using `sumo --version`.
 2021-06-08 11:10:14,298 INFO  FederationManagement - Starting federate 'sumo' locally in ./tmp/sumo
 2021-06-08 11:10:14,298 INFO  FederationManagement - Add ambassador/federate with id 'output'
 11:10:18 - Simulating: 59000000000ns (59.0s / 1000.0s) - 5.9% (RTF:0.00, ETC:unknown)                    
-11:10:19 - Simulating: 124000000000ns (124.0s / 1000.0s) - 12.4% (RTF:0.00, ETC:unknown)                
-11:10:20 - Simulating: 175000000000ns (175.0s / 1000.0s) - 17.5% (RTF:0.00, ETC:unknown)                
-11:10:20 - Simulating: 195000000000ns (195.0s / 1000.0s) - 19.5% (RTF:37.26, ETC:21.7s)                 
-11:10:21 - Simulating: 250000000000ns (250.0s / 1000.0s) - 25.0% (RTF:37.26, ETC:21.7s)                 
-11:10:23 - Simulating: 302000000000ns (302.0s / 1000.0s) - 30.2% (RTF:37.26, ETC:21.7s)                 
-11:10:24 - Simulating: 385000000000ns (385.0s / 1000.0s) - 38.5% (RTF:37.26, ETC:21.7s)                 
+11:10:20 - Simulating: 195000000000ns (195.0s / 1000.0s) - 19.5% (RTF:37.26, ETC:21.7s)                  
 11:10:25 - Simulating: 555000000000ns (555.0s / 1000.0s) - 55.5% (RTF:37.26, ETC:21.7s)                 
 11:10:25 - Simulating: 1000000000000ns (1000.0s) - 100.0%
 11:10:25 - Duration: 00h 00m 10.008s (RTF: 99.00)
 11:10:25 - Simulation finished: 101
 ```
 
-**Congrats!** If you need help with problem or need troubleshooting, please feel free to contact me: [ongun.turkcuoglu@campus.tu-berlin.de]
+**Congrats!** You successfully installed Mosaic!
+
+
+<div style="page-break-after: always;"></div>
+
+# Setting up the analysis toolbox
+
+In order to execute experiments and analyze the results, we provide a little Python toolbox for you which you can execute using the provided Jupyter notebook. Like in the previous workshop, you need to have [Python](https://www.python.org/downloads/) installed on your machine.
+
+## Install dependencies
+
+To install the Python dependencies, please open a terminal in the `cid_workshop2_prep` folder and run the following:
+
+```
+pip install -r requirements.txt
+```
+
+If you have multiple Python projects installed you might want to use a [virtual environment](https://docs.python.org/3/tutorial/venv.html) to install your dependencies, however, this is not required. If you do so, take care that [the notebook kernel points to the correct venv](https://janakiev.com/blog/jupyter-virtual-envs/).
+
+
+## Execute the toolbox
+
+To start the toolbox run:
+
+```
+jupyter notebook
+```
+
+A browser window will open. Select `notebook.ipynb`.
+
+**Congrats Again!** See if all the notebook cells run without errors and you are ready to attend the workshop!
+
+
+In case of problems please feel free to contact me (ongun.turkcuoglu@campus.tu-berlin.de).

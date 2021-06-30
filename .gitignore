@@ -13,6 +13,6 @@ slides/lecture
 slides/CID_Workshop-I.pptx
 slides/swd(2013)527-communication.pdf
 
-releases/workshop_prep/cid_venv
-releases/workshop_prep/.ipynb_checkpoints
-releases/workshop_prep/__pycache__
+cid_venv
+.ipynb_checkpoints
+__pycache__
