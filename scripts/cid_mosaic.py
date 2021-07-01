@@ -21,7 +21,7 @@ try:
     sys.path.append(tools)
     import sumolib
 except ImportError:
-    sys.exit("please declare environment variable 'SUMO_HOME'")
+    sys.exit("Please declare the environment variable 'SUMO_HOME'")
 
 
 class cid_mosaic:
@@ -29,50 +29,31 @@ class cid_mosaic:
 
     Parameters
     ----------
-    path_to_m : str
+    mosaic_path : str
         path to Eclipse MOSAIC
     sim_name : str
         Simulation name
-    is_unix : bool
-        Set True for UNIX based systems, set false for WINDOWS
     """
     def __init__(self,
-                 path_to_m: str,
-                 sim_name: str,
-                 is_unix: bool = True) -> None:
-        self._path_to_m = path_to_m
-        self._sim_name = sim_name
+                 mosaic_path: str,
+                 sim_name: str = 'Barnim') -> None:
+        self.sim_name = sim_name
+        self.mosaic_path = mosaic_path
+        self.set_simulation_result()
 
-        self.is_unix = is_unix
-
-        self._cd_mosaic()
-
-    def _cd_mosaic(self):
-        os.chdir(self._path_to_m)
-        self.cwd = os.getcwd()
-
-    def _std_pipe(self, command):
-        sys.stdout.buffer.write(command.stdout)
-        sys.stderr.buffer.write(command.stderr)
-        # sys.exit(command.returncode)
-
-    def run_simulation(self, jupyter=False) -> None:
+    def run_simulation(self) -> None:
         """Run the selected simulation and record logs
         """
-        extension = '.sh' if self.is_unix is True else '.bat'
-        if jupyter is False:
-            command = subprocess.run(['./mosaic' + extension,
-                                      ' -s',
-                                      self._sim_name + ' -v'],
-                                     capture_output=True)
-            self._std_pipe(command)
-            return 0
-        else:
-            cmd = './mosaic' + extension + ' -s' \
-                + self.sim_name + ' -v'
-            return cmd
+        extension = '.sh' if os.name == 'posix' else '.bat'
+        command = ['./mosaic' + extension, '-s', self.sim_name, '-v']
+        print("Running: " + " ".join(command))
+        output = subprocess.check_output(command,
+                                        stderr=subprocess.STDOUT,
+                                        cwd=self.mosaic_path)
+        print(output.decode('ascii'))
+        self.set_simulation_result()
 
-    def select_simulation_result(self, idx: int = 0):
+    def set_simulation_result(self, idx: int = 0):
         """Utility function to select the simulation and generate DataFrames
         IMPORTANT: Always run this function first after run_simulation() and
         before any other getter/setter and diverse functions!
@@ -83,10 +64,17 @@ class cid_mosaic:
             index of the log, 0 is the most recent result from
             the simulation, 1 is the second most recent, by default 0
         """
-        log_path = os.path.join('.', 'logs')
-        dirs = sorted([f.name for f in os.scandir(log_path) if f.is_dir()],
-                      reverse=True)
+        log_path = os.path.join(self.mosaic_path, 'logs')
+        try:
+            dirs = sorted([f.name for f in os.scandir(log_path) if f.is_dir()],
+                           reverse=True)
+        except FileNotFoundError:
+            print("Warning: Could not load any existing simulation results.")
+            return
+        
         self.sim_select = os.path.join(log_path, dirs[idx])
+        latest = "latest " if idx == 0 else ""
+        print(f"Loading {latest}simulation result '{dirs[idx]}'")
 
         output_root = self._get_output_config()
 
@@ -97,7 +85,6 @@ class cid_mosaic:
             v = [re.sub(r"\.", '', i) for i in v]
             v[0] = 'Event'
             id2fields[k] = v
-
         self.id2fields = id2fields
 
     def filter_df(self, **kwargs) -> pd.DataFrame:
@@ -114,7 +101,6 @@ class cid_mosaic:
         pd.DataFrame
             Filtered DataFrame
         """
-
         assert 'Event' in kwargs, 'Must specify an event name'
         assert 'select' in kwargs, 'Either "all" or list of str'
         if kwargs['select'] == 'all':
@@ -160,10 +146,9 @@ class cid_mosaic:
                            names=col_names)
 
     def _get_output_config(self):
-
-        xml_path = os.path.join('.',
+        xml_path = os.path.join(self.mosaic_path,
                                 'scenarios',
-                                self._sim_name,
+                                self.sim_name,
                                 'output',
                                 'output_config.xml')
 
@@ -205,9 +190,9 @@ class cid_mosaic:
         """
 
         if federate == 'scenario':
-            path_to_fedjson = os.path.join('.',
+            path_to_fedjson = os.path.join(self.mosaic_path,
                                            'scenarios',
-                                           self._sim_name,
+                                           self.sim_name,
                                            'scenario_config.json')
             self.fed_path = path_to_fedjson
             foo = open(path_to_fedjson)
@@ -216,9 +201,9 @@ class cid_mosaic:
             return path_to_fedjson
 
         else:
-            path_to_json = os.path.join('.',
+            path_to_json = os.path.join(self.mosaic_path,
                                         'scenarios',
-                                        self._sim_name,
+                                        self.sim_name,
                                         federate)
 
             json_files = sorted([pos_json for pos_json
@@ -286,9 +271,9 @@ class cid_mosaic:
     def get_federates(self):
         """Print available federate configurations
         """
-        path_to_settings = os.path.join('.',
+        path_to_settings = os.path.join(self.mosaic_path,
                                         'scenarios',
-                                        self._sim_name)
+                                        self.sim_name)
         print('Available federates: {}'.format(sorted(
             [f.name for f in os.scandir(path_to_settings)])))
 
@@ -314,7 +299,6 @@ class cid_mosaic:
         list
             DataFrame Events
         """
-
         return list(self.id2fields.keys())
 
     def get_df_labels(self, event: str) -> list:
@@ -343,34 +327,12 @@ class cid_mosaic:
         """
         return self.output_df
 
-    @property
-    def sim_name(self) -> str:
-        """Getter simulation name
-
-        Returns
-        -------
-        str
-            simulation name
-        """
-        return self._sim_name
-
-    @sim_name.setter
-    def sim_name(self, value: str) -> None:
-        """Setter simulation name
-
-        Parameters
-        ----------
-        value : simulation name
-            value to set
-        """
-        self._sim_name = value
-
     def plotter(self) -> None:
-        path_net = os.path.join('.',
+        path_net = os.path.join(self.mosaic_path,
                                 'scenarios',
-                                'Barnim',
+                                self.sim_name,
                                 'sumo',
-                                'Barnim.net.xml')
+                                self.sim_name + '.net.xml')
 
         net = sumolib.net.readNet(path_net)
         x_off, y_off = net.getLocationOffset()
@@ -455,7 +417,6 @@ class cid_mosaic:
         plt.legend(loc='upper left')
 
     def _classify(self, gps_coord):
-
         A = [13.5359800, 52.6128399]
         B = [13.567001, 52.644249]
 
