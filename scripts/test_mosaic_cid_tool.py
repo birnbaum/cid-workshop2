@@ -6,10 +6,9 @@ import seaborn as sns
 
 def main():
     sns.set()
-    mosaic = cid_mosaic('/home/onqi/Documents/eclipse_mosaic/',
-                        'Barnim')
-    # mosaic.run_simulation()
-    mosaic.select_simulation_result()
+    mosaic = cid_mosaic('/home/onqi/Documents/eclipse_mosaic/')
+    mosaic.run_simulation()
+    mosaic.set_simulation_result()
     """
     print(mosaic.get_df_labels)
     print(mosaic.get_df_events)
