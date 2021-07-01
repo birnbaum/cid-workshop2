@@ -387,7 +387,60 @@ class cid_mosaic:
                          facecolor='none', label='Hazardous Road')
 
         ax.add_patch(rect)
+        
+    def eval_simulation(self) -> list:
+        """Evaluate simulation
 
+        Returns
+        -------
+        list
+            [num vehicles standard route,
+            num vehicles alternate route]
+            
+        """
+        c = [13.54995, 52.63254, 0.01]  # x, y, r
+        
+        df = self.filter_df(Event='VEHICLE_UPDATES',
+                            select=['PositionLongitude',
+                                    'PositionLatitude',
+                                    'Name'])
+        
+        veh_total = len(set(df.Name))
+
+        gps_obs = np.concatenate(
+            (np.asfarray(df.PositionLongitude).reshape(-1, 1),
+             np.asfarray(df.PositionLatitude).reshape(-1, 1)), axis=1)
+        
+        veh_in_circle = list()
+        
+        for idx, val in enumerate(gps_obs):
+            foo = self._in_circle(val, c)
+            if foo is True:
+                veh_in_circle.append(df.Name.iloc[idx])
+            else:
+                pass
+            
+        set_v2r = set(veh_in_circle)
+        veh2alt = len(set_v2r)
+        veh2std = veh_total - veh2alt
+        
+        print("{} vehicles took the standard route".format(veh2std))
+        print("{} vehicles took the alternate route".format(veh2alt))
+
+        return veh2std, veh2alt
+
+    def _in_circle(self, p, c):
+        xp, yp = p[0], p[1]
+        xc, yc, r = c
+        
+        d = np.sqrt((xp-xc)**2 + (yp-yc)**2)
+        
+        if r > d:  # Point is in circle
+            return True
+        else:
+            return False
+
+        '''
         df = self.filter_df(Event='VEHICLE_UPDATES',
                             select=['PositionLongitude',
                                     'PositionLatitude'])
@@ -414,7 +467,9 @@ class cid_mosaic:
                    alpha=w1,
                    linewidths=1,
                    label='Density = {}'.format(w1))
+        '''
         plt.legend(loc='upper left')
+        
 
     def _classify(self, gps_coord):
         A = [13.5359800, 52.6128399]

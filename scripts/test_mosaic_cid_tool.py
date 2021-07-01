@@ -6,10 +6,9 @@ import seaborn as sns
 
 def main():
     sns.set()
-    mosaic = cid_mosaic('/home/onqi/Documents/eclipse_mosaic/',
-                        'Barnim')
+    mosaic = cid_mosaic('/home/onqi/Documents/eclipse_mosaic/')
     # mosaic.run_simulation()
-    mosaic.select_simulation_result()
+    mosaic.set_simulation_result()
     """
     print(mosaic.get_df_labels)
     print(mosaic.get_df_events)
@@ -68,7 +67,7 @@ def main():
                             select=['MappingPositionLatitude',
                                     'MappingPositionLongitude'])
     """
-
+    mosaic.eval_simulation()
     mosaic.plotter()
     plt.show()
 
