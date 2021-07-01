@@ -394,6 +394,8 @@ class cid_mosaic:
         Returns
         -------
         list
+            [num vehicles standard route,
+            num vehicles alternate route]
             
         """
         c = [13.54995, 52.63254, 0.01]  # x, y, r
@@ -422,10 +424,8 @@ class cid_mosaic:
         veh2alt = len(set_v2r)
         veh2std = veh_total - veh2alt
         
-        print("{} vehicles took the standard route,\
-              {} vehicles took the alternate route". format(
-                  veh2std, veh2alt
-              ))
+        print("{} vehicles took the standard route".format(veh2std))
+        print("{} vehicles took the alternate route".format(veh2alt))
 
         return veh2std, veh2alt
 
