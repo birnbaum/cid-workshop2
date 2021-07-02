@@ -48,8 +48,8 @@ class cid_mosaic:
         command = ['./mosaic' + extension, '-s', self.sim_name, '-v']
         print("Running: " + " ".join(command))
         output = subprocess.check_output(command,
-                                        stderr=subprocess.STDOUT,
-                                        cwd=self.mosaic_path)
+                                         stderr=subprocess.STDOUT,
+                                         cwd=self.mosaic_path)
         print(output.decode('ascii'))
         self.set_simulation_result()
 
@@ -67,11 +67,11 @@ class cid_mosaic:
         log_path = os.path.join(self.mosaic_path, 'logs')
         try:
             dirs = sorted([f.name for f in os.scandir(log_path) if f.is_dir()],
-                           reverse=True)
+                          reverse=True)
         except FileNotFoundError:
             print("Warning: Could not load any existing simulation results.")
             return
-        
+
         self.sim_select = os.path.join(log_path, dirs[idx])
         latest = "latest " if idx == 0 else ""
         print(f"Loading {latest}simulation result '{dirs[idx]}'")
@@ -387,7 +387,7 @@ class cid_mosaic:
                          facecolor='none', label='Hazardous Road')
 
         ax.add_patch(rect)
-        
+
     def eval_simulation(self) -> list:
         """Evaluate simulation
 
@@ -395,46 +395,67 @@ class cid_mosaic:
         -------
         list
             [num vehicles standard route,
-            num vehicles alternate route]
-            
+            num vehicles alternate route,
+            co2 emissions]
+
         """
         c = [13.54995, 52.63254, 0.01]  # x, y, r
-        
+
         df = self.filter_df(Event='VEHICLE_UPDATES',
                             select=['PositionLongitude',
                                     'PositionLatitude',
                                     'Name'])
-        
+
         veh_total = len(set(df.Name))
 
         gps_obs = np.concatenate(
             (np.asfarray(df.PositionLongitude).reshape(-1, 1),
              np.asfarray(df.PositionLatitude).reshape(-1, 1)), axis=1)
-        
+
         veh_in_circle = list()
-        
+
         for idx, val in enumerate(gps_obs):
             foo = self._in_circle(val, c)
             if foo is True:
                 veh_in_circle.append(df.Name.iloc[idx])
             else:
                 pass
-            
+
         set_v2r = set(veh_in_circle)
         veh2alt = len(set_v2r)
         veh2std = veh_total - veh2alt
-        
+
+        # CO2 Emissions
+        df = self.filter_df(Event='VEHICLE_UPDATES',
+                            select=['Name', 'VehicleEmissionsAllEmissionsCo2'])
+
+        veh_co2_list = []
+        co2_emission = 0
+        for idx, val in reversed(list(enumerate(zip(
+                df.Name, df.VehicleEmissionsAllEmissionsCo2)))):
+            # val[0] = vehicle, val[1]=co2emission
+            if val[0] in veh_co2_list:
+                pass
+            else:
+                veh_co2_list.append(val[0])
+                co2_emission += val[1]
+
+            if len(veh_co2_list) == veh_total:
+                break
+
         print("{} vehicles took the standard route".format(veh2std))
         print("{} vehicles took the alternate route".format(veh2alt))
+        print("{} vehicles released a total of {} mg CO2".format(veh_total,
+                                                                 co2_emission))
 
-        return veh2std, veh2alt
+        return veh2std, veh2alt, co2_emission
 
     def _in_circle(self, p, c):
         xp, yp = p[0], p[1]
         xc, yc, r = c
-        
+
         d = np.sqrt((xp-xc)**2 + (yp-yc)**2)
-        
+
         if r > d:  # Point is in circle
             return True
         else:
@@ -469,7 +490,6 @@ class cid_mosaic:
                    label='Density = {}'.format(w1))
         '''
         plt.legend(loc='upper left')
-        
 
     def _classify(self, gps_coord):
         A = [13.5359800, 52.6128399]

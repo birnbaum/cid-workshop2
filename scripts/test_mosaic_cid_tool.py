@@ -7,7 +7,7 @@ import seaborn as sns
 def main():
     sns.set()
     mosaic = cid_mosaic('/home/onqi/Documents/eclipse_mosaic/')
-    # mosaic.run_simulation()
+    mosaic.run_simulation()
     mosaic.set_simulation_result()
     """
     print(mosaic.get_df_labels)

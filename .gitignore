@@ -16,3 +16,8 @@ slides/swd(2013)527-communication.pdf
 cid_venv
 .ipynb_checkpoints
 __pycache__
+mosaic_dev/app/tutorials/weather-warning-cid/target/classes/org/eclipse/mosaic/app/tutorial/SlowDownApp.class
+mosaic_dev/app/tutorials/weather-warning-cid/target/classes/org/eclipse/mosaic/app/tutorial/WeatherServerApp.class
+mosaic_dev/app/tutorials/weather-warning-cid/target/classes/org/eclipse/mosaic/app/tutorial/WeatherWarningApp.class
+mosaic_dev/app/tutorials/weather-warning-cid/target/classes/org/eclipse/mosaic/app/tutorial/WeatherWarningAppCell.class
+mosaic_dev/app/tutorials/weather-warning-cid/target/test-classes/WeatherWarningAppTest.class
