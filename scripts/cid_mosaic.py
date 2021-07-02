@@ -24,8 +24,8 @@ except ImportError:
     sys.exit("Please declare the environment variable 'SUMO_HOME'")
 
 
-class cid_mosaic:
-    """Initialize the path to MOSAIC and simulation name
+class Mosaic:
+    """Initialize the Mosaic toolbox
 
     Parameters
     ----------
@@ -41,11 +41,13 @@ class cid_mosaic:
         self.mosaic_path = mosaic_path
         self.set_simulation_result()
 
-    def run_simulation(self) -> None:
+    def run_simulation(self, visualize=True) -> None:
         """Run the selected simulation and record logs
         """
         extension = '.sh' if os.name == 'posix' else '.bat'
-        command = ['./mosaic' + extension, '-s', self.sim_name, '-v']
+        command = ['./mosaic' + extension, '-s', self.sim_name]
+        if visualize:
+            command.append('-v')
         print("Running: " + " ".join(command))
         output = subprocess.check_output(command,
                                          stderr=subprocess.STDOUT,
@@ -428,27 +430,14 @@ class cid_mosaic:
         # CO2 Emissions
         df = self.filter_df(Event='VEHICLE_UPDATES',
                             select=['Name', 'VehicleEmissionsAllEmissionsCo2'])
-
-        veh_co2_list = []
-        co2_emission = 0
-        for idx, val in reversed(list(enumerate(zip(
-                df.Name, df.VehicleEmissionsAllEmissionsCo2)))):
-            # val[0] = vehicle, val[1]=co2emission
-            if val[0] in veh_co2_list:
-                pass
-            else:
-                veh_co2_list.append(val[0])
-                co2_emission += val[1]
-
-            if len(veh_co2_list) == veh_total:
-                break
+        co2_per_car = df[["Name", "VehicleEmissionsAllEmissionsCo2"]].groupby("Name").max()
+        co2_mean = co2_per_car.mean()[0] / 1000
 
         print("{} vehicles took the standard route".format(veh2std))
         print("{} vehicles took the alternate route".format(veh2alt))
-        print("{} vehicles released a total of {} mg CO2".format(veh_total,
-                                                                 co2_emission))
+        print("On average a vehicle released {:.2f} g CO2".format(co2_mean))
 
-        return veh2std, veh2alt, co2_emission
+        return veh2std, veh2alt, co2_mean
 
     def _in_circle(self, p, c):
         xp, yp = p[0], p[1]
