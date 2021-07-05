@@ -8,10 +8,10 @@ from lxml import etree
 import numpy as np
 import pandas as pd
 import glom
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import pyproj
-from matplotlib.collections import LineCollection
-from matplotlib.patches import Rectangle
+# from matplotlib.collections import LineCollection
+# from matplotlib.patches import Rectangle
 
 from typing import Any
 
@@ -329,6 +329,7 @@ class Mosaic:
         """
         return self.output_df
 
+    """
     def plotter(self) -> None:
         path_net = os.path.join(self.mosaic_path,
                                 'scenarios',
@@ -389,6 +390,7 @@ class Mosaic:
                          facecolor='none', label='Hazardous Road')
 
         ax.add_patch(rect)
+    """
 
     def eval_simulation(self) -> list:
         """Evaluate simulation
@@ -478,7 +480,7 @@ class Mosaic:
                    linewidths=1,
                    label='Density = {}'.format(w1))
         '''
-        plt.legend(loc='upper left')
+        # plt.legend(loc='upper left')
 
     def _classify(self, gps_coord):
         A = [13.5359800, 52.6128399]
