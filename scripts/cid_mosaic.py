@@ -44,14 +44,16 @@ class Mosaic:
     def run_simulation(self, visualize=True) -> None:
         """Run the selected simulation and record logs
         """
-        extension = '.sh' if os.name == 'posix' else '.bat'
-        command = ['./mosaic' + extension, '-s', self.sim_name]
+        extension = './mosaic.sh' if os.name == 'posix' else 'mosaic.bat'
+        shell = False if os.name == 'posix' else True
+        command = [extension, '-s', self.sim_name]
         if visualize:
             command.append('-v')
         print("Running: " + " ".join(command))
         output = subprocess.check_output(command,
                                          stderr=subprocess.STDOUT,
-                                         cwd=self.mosaic_path)
+                                         cwd=self.mosaic_path,
+                                         shell=shell)
         print(output.decode('ascii'))
         self.set_simulation_result()
 
