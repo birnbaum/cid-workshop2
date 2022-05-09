@@ -140,4 +140,4 @@ A browser window will open. Select `notebook.ipynb`.
 **Congrats Again!** See if all the notebook cells run without errors and you are ready to attend the workshop!
 
 
-In case of problems please feel free to contact me (ongun.turkcuoglu@campus.tu-berlin.de).
+In case of problems please feel free to contact me (muzaffer.citir@campus.tu-berlin.de).
